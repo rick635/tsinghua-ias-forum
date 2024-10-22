@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>2024 Tsinghua University Institute for Advanced Study Young Scholars Interdisciplinary Forum</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('1729578604039.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: rgba(102, 8, 116, 0.9); /* Tsinghua purple */
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        nav {
+            background-color: rgba(102, 8, 116, 0.85); /* Tsinghua purple */
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav .nav-links {
+            display: inline-block;
+        }
+        nav a {
+            color: white;
+            margin: 0 25px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .lang-switch {
+            position: absolute;
+            top: 15px;
+            right: 30px;
+        }
+        .lang-switch button {
+            background: linear-gradient(135deg, rgb(102, 8, 116), rgb(153, 51, 153)); /* Purple gradient */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .lang-switch button:hover {
+            background: linear-gradient(135deg, rgb(80, 4, 90), rgb(102, 8, 116)); /* Darker purple */
+        }
+        .banner {
+            background-color: rgba(153, 51, 153, 0.8); /* Light purple */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .details div {
+            font-size: 18px;
+            background: linear-gradient(135deg, rgb(102, 8, 116), rgb(153, 51, 153)); /* Purple gradient */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .details div:hover {
+            background: linear-gradient(135deg, rgb(80, 4, 90), rgb(102, 8, 116)); /* Darker purple */
+        }
+        .container {
+            padding: 0 10px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h3 {
+            font-size: 22px;
+            border-bottom: 2px solid rgb(102, 8, 116); /* Tsinghua purple */
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .agenda-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .agenda-column {
+            flex: 1;
+            margin: 0 10px;
+        }
+        .agenda-column h4 {
+            text-align: center;
+            color: rgb(102, 8, 116); /* Tsinghua purple */
+            border-bottom: 2px solid rgb(102, 8, 116);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .agenda-list {
+            list-style: none;
+            padding: 0;
+            font-size: 14px;
+        }
+        .agenda-list li {
+            background-color: #e0e0e0;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 5px;
+            line-height: 1.4;
+        }
+        .speaker-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        .speaker-item {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+            width: 22%;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .speaker-item img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin-bottom: 8px;
+        }
+        .speaker-item h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: rgb(102, 8, 116); /* Tsinghua purple */
+        }
+        .speaker-item p {
+            font-size: 12px;
+            margin: 4px 0;
+        }
+        .organizers-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .organizer-item {
+            background-color: #f8f8f8;
+            padding: 15px;
+            text-align: center;
+            width: 30%;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .organization-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-top: 30px;
+            text-align: center;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            background-color: rgb(102, 8, 116); /* Tsinghua purple */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>2024 Tsinghua University Institute for Advanced Study Young Scholars Interdisciplinary Forum</h1>
+</header>
+
+<nav>
+    <div class="nav-links">
+        <a href="#home">Forum Introduction</a>
+        <a href="#agenda">Forum Agenda</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#organization">Organizers</a>
+    </div>
+    <div class="lang-switch">
+        <button><a href = "cn_index.html">中文 / English</a></button>
+    </div>
+</nav>
+
+<section class="banner">
+    <div class="details">
+        <div>Date: December 10-11, 2024</div>
+        <div>Location: Tsinghua University Science Building</div>
+    </div>
+</section>
+
+<div class="container">
+    <section id="home" class="section">
+        <h3>Forum Introduction</h3>
+        <p>This forum is hosted by the Tsinghua University Institute for Advanced Study. The Institute is a basic science research entity established by Tsinghua University, dedicated to advancing fundamental research, cultivating innovative talents, and promoting international academic collaboration. It focuses on areas such as statistical physics, mathematical physics, theoretical biology, and theoretical computer science. The Institute advocates for "innovation, interdisciplinary, and integration," aiming to foster cross-disciplinary research in basic science and building an internationally renowned academic research center. The Young Scholars Interdisciplinary Forum provides a platform for young scholars from various fields to exchange and collaborate, discussing cutting-edge scientific issues and driving academic breakthroughs and innovations.</p>
+    </section>
+
+    <!-- Forum agenda, divided into two columns -->
+    <section id="agenda" class="section">
+        <h3>Forum Agenda</h3>
+        <div class="agenda-container">
+            <!-- Left column: Morning sessions -->
+            <div class="agenda-column">
+                <h4>Morning Sessions: Computer Science</h4>
+                <ul class="agenda-list">
+                    <li>09:00 - 09:20 The Future and Challenges of Blockchain - Prof. XXX</li>
+                    <li>09:20 - 09:40 Applications of AI in Data Security - Dr. YYY</li>
+                    <li>09:40 - 10:00 Advances in Quantum Computing and Cryptography - Prof. ZZZ</li>
+                    <li>10:00 - 10:20 Consensus Protocols in Large-Scale Distributed Systems - Dr. AAA</li>
+                    <li>10:20 - 10:40 Latest Developments in Privacy-Preserving Technologies - Prof. BBB</li>
+                    <li>10:40 - 11:00 Future Trends in Post-Quantum Cryptography - Dr. CCC</li>
+                </ul>
+            </div>
+
+            <!-- Right column: Afternoon sessions -->
+            <div class="agenda-column">
+                <h4>Afternoon Sessions: Physics</h4>
+                <ul class="agenda-list">
+                    <li>13:00 - 13:20 Frontier Exploration in Particle Physics - Prof. DDD</li>
+                    <li>13:20 - 13:40 Dark Matter Research in Astrophysics - Dr. EEE</li>
+                    <li>13:40 - 14:00 Emerging Theories in Quantum Mechanics - Prof. FFF</li>
+                    <li>14:00 - 14:20 Latest Research in Condensed Matter Physics - Dr. GGG</li>
+                    <li>14:20 - 14:40 Modern Applications of Quantum Field Theory - Prof. HHH</li>
+                    <li>14:40 - 15:00 Breakthroughs in High-Energy Physics Experiments - Dr. III</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers section, 4 per row, displaying 12 speakers -->
+    <section id="speakers" class="section">
+        <h3>Speakers</h3>
+        <div class="speaker-grid">
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Prof. XXX">
+                <h4>Prof. XXX</h4>
+                <p>Institution: Tsinghua University</p>
+                <p>Research Area: Blockchain Security and Distributed Systems</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Dr. YYY">
+                <h4>Dr. YYY</h4>
+                <p>Institution: Peking University</p>
+                <p>Research Area: AI and Data Privacy</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Prof. ZZZ">
+                <h4>Prof. ZZZ</h4>
+                <p>Institution: Fudan University</p>
+                <p>Research Area: Quantum Computing and Cryptography</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Dr. AAA">
+                <h4>Dr. AAA</h4>
+                <p>Institution: Shanghai Jiao Tong University</p>
+                <p>Research Area: Distributed Systems and Consensus Mechanisms</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Prof. BBB">
+                <h4>Prof. BBB</h4>
+                <p>Institution: Zhejiang University</p>
+                <p>Research Area: Privacy-Preserving Technologies</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Dr. CCC">
+                <h4>Dr. CCC</h4>
+                <p>Institution: Chinese Academy of Sciences</p>
+                <p>Research Area: Post-Quantum Cryptography</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Prof. DDD">
+                <h4>Prof. DDD</h4>
+                <p>Institution: Tsinghua University</p>
+                <p>Research Area: High-Energy Physics</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Dr. EEE">
+                <h4>Dr. EEE</h4>
+                <p>Institution: Beijing Normal University</p>
+                <p>Research Area: Astrophysics</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Dr. FFF">
+                <h4>Dr. FFF</h4>
+                <p>Institution: Nanjing University</p>
+                <p>Research Area: Condensed Matter Physics</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Dr. GGG">
+                <h4>Dr. GGG</h4>
+                <p>Institution: Sun Yat-Sen University</p>
+                <p>Research Area: Quantum Mechanics and Field Theory</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Prof. HHH">
+                <h4>Prof. HHH</h4>
+                <p>Institution: Nankai University</p>
+                <p>Research Area: High-Energy Physics Experiments</p>
+            </div>
+            <div class="speaker-item">
+                <img src="speaker.png" alt="Dr. III">
+                <h4>Dr. III</h4>
+                <p>Institution: University of Science and Technology of China</p>
+                <p>Research Area: Particle Accelerator Physics</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizers section -->
+    <section id="organizers" class="section">
+        <h3>Organizers</h3>
+        <div class="organizers-grid">
+            <div class="organizer-item">
+                <h4>Chair: Prof. Li</h4>
+                <p>Prof. Li is a professor at the Department of Computer Science at Tsinghua University, specializing in blockchain and distributed system security.</p>
+            </div>
+            <div class="organizer-item">
+                <h4>Vice Chair: Dr. Wang</h4>
+                <p>Dr. Wang is an associate professor at Peking University’s School of Physics, focusing on quantum physics and high-energy physics.</p>
+            </div>
+            <div class="organizer-item">
+                <h4>Session Chair: Prof. Zhang</h4>
+                <p>Prof. Zhang is a professor at the School of Information Science and Technology at Shanghai Jiao Tong University, specializing in artificial intelligence and data security.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organization section -->
+    <section id="organization" class="organization-section">
+        <h3>Organization</h3>
+        <p>Host: Tsinghua University Institute for Advanced Study</p>
+        <p>Co-organizer: Tsinghua University Postdoctoral Management Office</p>
+    </section>
+
+</div>
+
+<footer class="footer">
+    <p>© 2024 Young Scholars Interdisciplinary Forum | Tsinghua University Institute for Advanced Study</p>
+</footer>
+
+</body>
+</html>
