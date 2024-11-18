@@ -146,8 +146,8 @@
         .speaker-item img {
             border-radius: 10px; 
             width: 100px;
-            height: 100px;
-            margin-bottom: 8px;
+            height: 115px;
+            margin-bottom: 4px;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .speaker-item h4 {
@@ -166,13 +166,17 @@
             margin-top: 30px;
         }
         .organizer-item {
-            background-color: #f8f8f8;
-            padding: 15px;
-            text-align: center;
-            width: 24%;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #f0f0f0; /* 和 speaker-item 一致 */
+			padding: 10px;
+			text-align: center;
+			width: 22%; /* 保持宽度一致 */
+			border-radius: 6px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+		.organizer-item p {
+			font-size: 12px; /* 和 speaker-item 的正文字体一致 */
+			margin: 4px 0;
+		}
         .organization-section {
             background-color: #f9f9f9;
             padding: 15px;
@@ -188,6 +192,46 @@
             text-align: center;
             margin-top: 30px;
         }
+		
+		.organizer-item img {
+		width: 100px;
+		height: 115px;
+		border-radius: 10px; /* 保持图片样式一致 */
+		margin-bottom: 4px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+		
+		/* AI安全 */
+		.ai-security {
+			background-color: #f0f9ff; /* 淡蓝色 */
+			border-left: 4px solid #2196f3; /* 蓝色边框 */
+			padding-left: 10px;
+		}
+
+		/* 区块链安全 */
+		.blockchain-security {
+			background-color: #f3f7e3; /* 淡绿色 */
+			border-left: 4px solid #4caf50; /* 绿色边框 */
+			padding-left: 10px;
+		}
+
+		/* 密码协议安全 */
+		.crypto-security {
+			background-color: #f9f0ff; /* 淡紫色 */
+			border-left: 4px solid #9c27b0; /* 紫色边框 */
+			padding-left: 10px;
+		}
+
+		/* 通用样式 */
+		.agenda-list li {
+			margin: 8px 0;
+			border-radius: 4px;
+			padding: 8px;
+			line-height: 1.4;
+			list-style: none;
+		}
+
+
     </style>
 </head>
 <body>
@@ -230,7 +274,7 @@
     <!-- 开幕式 -->
     <div class="agenda-container">
         <div style="text-align: center; margin-bottom: 5px;">
-            <h4>开幕式，08:45 - 09:00，清华大学高等研究院副院长翁征宇致辞</h4>
+            <h4>开幕式，08:45 - 09:00，清华大学高等研究院副院长翁征宇教授致辞</h4>
         </div>
     </div>
 
@@ -240,13 +284,13 @@
 			<div class="agenda-column">
 				<h4>上午议程：网络空间安全</h4>
 				<ul class="agenda-list">
-					<li>09:00 - 09:25 待定 - XXX教授</li>
-					<li>09:25 - 09:50 待定 - YYY博士</li>
-					<li>09:50 - 10:15 待定 - ZZZ教授</li>
-					<li><b>10:15 - 10:30 茶歇</b></li> <!-- 茶歇 -->
-					<li>10:30 - 10:55 待定 - AAA博士</li>
-					<li>10:55 - 11:20 待定 - BBB教授</li>
-					<li>11:20 - 11:45 待定 - CCC博士</li>
+					<li class="ai-security">09:00 - 09:25 大模型越狱攻击 - 丛天硕博士</li>
+					<li class="ai-security">09:25 - 09:50 非平稳分布下的强化学习 - 罗宇博士（在读）</li>
+					<li class="blockchain-security">09:50 - 10:15 大规模区块链共识 - 王馨博士</li>
+					<li><b>10:15 - 10:30 茶歇</b></li>
+					<li class="blockchain-security">10:30 - 10:55 半同步拜占庭容错共识分析 - 隋笑博士</li>
+					<li class="crypto-security">10:55 - 11:20 两方隐私集合求并协议设计 - 张聪博士</li>
+					<li class="crypto-security">11:20 - 11:45 基于同态加密的同态秘密共享方案 - 黄泰榕博士</li>
 				</ul>
 			</div>
 
@@ -255,8 +299,8 @@
 				<h4>下午议程：物理学</h4>
 				<ul class="agenda-list">
 					<li>13:00 - 13:25 量子纠错码的进展两种 - 王亦许博士</li>
-					<li>13:25 - 13:50 凝聚态物理的最新研究 - 李成疏博士，副研究员</li>
-					<li>13:50 - 14:15 行星科学和恒星演化 - 陈卓博士，副研究员</li>
+					<li>13:25 - 13:50 凝聚态物理的最新研究 - 李成疏副研究员</li>
+					<li>13:50 - 14:15 行星科学和恒星演化 - 陈卓副研究员</li>
 					<li><b>14:15 - 14:30 茶歇</b></li> <!-- 茶歇 -->
 					<li>14:30 - 14:55 待定 - GGG博士</li>
 					<li>14:55 - 15:20 待定 - XX博士</li>
@@ -271,63 +315,63 @@
         <h3>演讲者介绍</h3>
         <div class="speaker-grid">
             <div class="speaker-item">
-                <img src="yixu.jpg" alt="王亦许博士">
+                <img src="yixu.jpg">
                 <h4>王亦许</h4>
                 <p>单位：清华大学高等研究院</p>
                 <p>研究领域：量子纠错码</p>
             </div>
             <div class="speaker-item">
-                <img src="speaker.png" alt="YYY博士">
-                <h4>YYY博士</h4>
-                <p>单位：北京大学</p>
-                <p>研究领域：人工智能与数据隐私</p>
+                <img src="tianshuo.jpg">
+                <h4>丛天硕</h4>
+                <p>单位：清华大学高等研究院</p>
+                <p>研究领域：人工智能安全</p>
             </div>
             <div class="speaker-item">
-                <img src="speaker.png" alt="ZZZ教授">
-                <h4>ZZZ教授</h4>
-                <p>单位：复旦大学</p>
-                <p>研究领域：量子计算与密码学</p>
+                <img src="luoyu.jpg">
+                <h4>罗宇</h4>
+                <p>单位：清华大学计算机科学与技术系</p>
+                <p>研究领域：强化学习</p>
             </div>
             <div class="speaker-item">
-                <img src="speaker.png" alt="AAA博士">
-                <h4>AAA博士</h4>
-                <p>单位：上海交通大学</p>
-                <p>研究领域：分布式系统与共识机制</p>
+                <img src="htr.jpg">
+                <h4>黄泰榕</h4>
+                <p>单位：清华大学高等研究院</p>
+                <p>研究领域：全同态加密</p>
             </div>
             <div class="speaker-item">
-                <img src="speaker.png" alt="BBB教授">
-                <h4>BBB教授</h4>
-                <p>单位：浙江大学</p>
-                <p>研究领域：隐私增强技术</p>
+                <img src="wangxin.jpg">
+                <h4>王馨</h4>
+                <p>单位：清华大学高等研究院</p>
+                <p>研究领域：区块链共识和分布式系统</p>
             </div>
             <div class="speaker-item">
-                <img src="speaker.png" alt="CCC博士">
-                <h4>CCC博士</h4>
-                <p>单位：中国科学院</p>
-                <p>研究领域：后量子密码学</p>
+                <img src="suixiao.jpg">
+                <h4>隋笑</h4>
+                <p>单位：清华大学高等研究院</p>
+                <p>研究领域：分布式共识与可证明安全理论</p>
             </div>
             <div class="speaker-item">
-                <img src="speaker.png" alt="DDD教授">
-                <h4>DDD教授</h4>
-                <p>单位：清华大学</p>
-                <p>研究领域：高能物理</p>
+                <img src="zhangcong.png">
+                <h4>张聪</h4>
+                <p>单位：清华大学高等研究院</p>
+                <p>研究领域：安全多方计算</p>
             </div>
             <div class="speaker-item">
                 <img src="speaker.png" alt="EEE博士">
                 <h4>EEE博士</h4>
-                <p>单位：北京师范大学</p>
+                <p>单位：清华大学高等研究院</p>
                 <p>研究领域：天体物理</p>
             </div>
             <div class="speaker-item">
                 <img src="speaker.png" alt="FFF博士">
                 <h4>FFF博士</h4>
-                <p>单位：南京大学</p>
+                <p>单位：清华大学高等研究院</p>
                 <p>研究领域：凝聚态物理</p>
             </div>
             <div class="speaker-item">
                 <img src="speaker.png" alt="GGG博士">
                 <h4>GGG博士</h4>
-                <p>单位：中山大学</p>
+                <p>单位：清华大学高等研究院</p>
                 <p>研究领域：量子力学与场论</p>
             </div>
             <div class="speaker-item">
@@ -347,30 +391,34 @@
 
     <!-- 组织者介绍 -->
     <section id="organizers" class="section">
-        <h3>组织者介绍</h3>
-        <div class="organizers-grid">
-            <div class="organizer-item">
-                <h4>XXX博士</h4>
-				<p>单位：清华大学高等研究院</p>
-                <!-- <p>XXX博士是清华大学XXXXX，专注于区块链和分布式系统安全研究。</p>-->
-            </div>
-            <div class="organizer-item">
-                <h4>CCC博士</h4>
-				<p>单位：清华大学高等研究院</p>
-                 <!-- <p>王博士是北京大学物理学院副教授，研究方向为量子物理与高能物理。</p>-->
-            </div>
-            <div class="organizer-item">
-                <h4>CCC博士</h4>
-				<p>单位：清华大学高等研究院</p>
-                 <!-- <p>DDD教授是上海交通大学信息科学与技术学院教授，专注于人工智能与数据安全。</p>-->
-            </div>
-			<div class="organizer-item">
-                <h4>YYY博士</h4>
-				<p>单位：清华大学高等研究院</p>
-                 <!-- <p>DDD教授是上海交通大学信息科学与技术学院教授，专注于人工智能与数据安全。</p>-->
-            </div>
+    <h3>组织者介绍</h3>
+    <div class="organizers-grid">
+        <div class="organizer-item">
+            <img src="rujia.png" alt="李汝佳">
+            <h4>李汝佳</h4>
+            <p>单位：清华大学高等研究院</p>
+            <p>研究领域：共识算法攻击、可信硬件应用</p>
         </div>
-    </section>
+        <div class="organizer-item">
+            <img src="chenyi.jpg" alt="陈怡">
+            <h4>陈怡</h4>
+            <p>单位：清华大学高等研究院</p>
+            <p>研究领域：人工智能安全</p>
+        </div>
+        <div class="organizer-item">
+            <img src="yixu.jpg" alt="王亦许">
+            <h4>王亦许</h4>
+            <p>单位：清华大学高等研究院</p>
+            <p>研究领域：量子纠错与分布式系统</p>
+        </div>
+        <div class="organizer-item">
+            <img src="speaker.png" alt="李成疏">
+            <h4>李成疏</h4>
+            <p>单位：清华大学高等研究院</p>
+            <p>研究领域：凝聚态物理与天文学</p>
+        </div>
+		</div>
+	</section>
 </div>
 
 <footer class="footer">
