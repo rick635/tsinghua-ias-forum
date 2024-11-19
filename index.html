@@ -86,7 +86,7 @@
         }
         .container {
             padding: 0 10px;
-            max-width: 1000px;
+            max-width: 1024px;
             margin: 0 auto;
             background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
@@ -146,8 +146,8 @@
 		
         .speaker-item img {
             border-radius: 10px; 
-            width: 100px;
-            height: 115px;
+            width: 103px;
+            height: 117px;
             margin-bottom: 4px;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -232,6 +232,26 @@
 			list-style: none;
 		}
 
+.tag {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 8px;
+    font-size: 12px;
+    color: white;
+    border-radius: 4px;
+    background-color: #4caf50; /* 默认绿色背景 */
+}
+
+/* 根据不同标签的小方向自定义颜色 */
+.ai-security .tag {
+    background-color: #2196f3; /* 蓝色表示AI安全 */
+}
+.blockchain-security .tag {
+    background-color: #4caf50; /* 绿色表示区块链安全 */
+}
+.crypto-security .tag {
+    background-color: #9c27b0; /* 紫色表示密码协议安全 */
+}
 
     </style>
 </head>
@@ -285,13 +305,13 @@
 			<div class="agenda-column">
 				<h4>上午议程：网络空间安全</h4>
 				<ul class="agenda-list">
-					<li class="ai-security">09:00 - 09:25 大模型越狱攻击 - 丛天硕</li>
-					<li class="ai-security">09:25 - 09:50 非平稳分布下的强化学习 - 罗宇</li>
-					<li class="blockchain-security">09:50 - 10:15 大规模区块链共识 - 王馨</li>
-					<li><b>10:15 - 10:30 茶歇</b></li>
-					<li class="blockchain-security">10:30 - 10:55 半同步拜占庭容错共识分析 - 隋笑</li>
-					<li class="crypto-security">10:55 - 11:20 两方隐私集合求并协议设计 - 张聪</li>
-					<li class="crypto-security">11:20 - 11:45 基于同态加密的同态秘密共享方案 - 黄泰榕</li>
+					<li class="ai-security">09:00 - 09:25 大模型越狱攻击 <span class="tag">AI安全</span></li>
+					<li class="ai-security">09:25 - 09:50 非平稳分布下的强化学习 <span class="tag">AI安全</span></li>
+					<li class="blockchain-security">09:50 - 10:15 大规模区块链共识 <span class="tag">区块链安全</span></li>
+					<li><b>14:15 - 14:30 茶歇</b></li> <!-- 茶歇 -->
+					<li class="blockchain-security">10:30 - 10:55 半同步拜占庭容错共识分析 <span class="tag">区块链安全</span></li>
+					<li class="crypto-security">10:55 - 11:20 两方隐私集合求并协议设计 <span class="tag">密码协议安全</span></li>
+					<li class="crypto-security">11:20 - 11:45 基于同态加密的同态秘密共享方案 <span class="tag">密码协议安全</span></li>
 				</ul>
 			</div>
 
@@ -299,8 +319,8 @@
 			<div class="agenda-column">
 				<h4>下午议程：物理学</h4>
 				<ul class="agenda-list">
-					<li>13:00 - 13:25 木星系的形成 - 陈卓</li>
-					<li>13:25 - 13:50 里德堡原子物理新进展 - 李成疏</li>
+					<li class="ai-security">13:00 - 13:25 木星系的形成 - 陈卓<span class="tag">天体物理</span></li>
+					<li class="blockchain-security">13:25 - 13:50 里德堡原子物理新进展 - 李成疏<span class="tag">量子多体物理</span></li> 
 					<li>13:50 - 14:15 湍流、Sachdev-Ye-Kitaev和路径积分 - 胡绪尧</li>
 					<li><b>14:15 - 14:30 茶歇</b></li> <!-- 茶歇 -->
 					<li>14:30 - 14:55 高阶元胞自动机生成的团簇态 - 李萌远</li>
@@ -316,7 +336,7 @@
         <h3>演讲者介绍</h3>
         <div class="speaker-grid">
 			<div class="speaker-item">
-                <img src="chenzhuo.png">
+                <img src="chenzhuo.jpg">
                 <h4>陈卓</h4>
                 <p>清华大学高等研究院 副研究员</p>
                 <p>研究领域：天体物理</p>
