@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>2024年清华大学高等研究院青年学者交叉论坛</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('1729578604039.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: rgba(102, 8, 116, 0.9); /* 清华紫 */
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        nav {
+            background-color: rgba(102, 8, 116, 0.85); /* 清华紫 */
+            padding: 15px 0;
+            text-align: center;
+        }
+        nav .nav-links {
+            display: inline-block;
+        }
+        nav a {
+            color: white;
+            margin: 0 25px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .lang-switch {
+            position: absolute;
+            top: 15px;
+            right: 30px;
+        }
+        .lang-switch button {
+            background: linear-gradient(135deg, rgb(102, 8, 116), rgb(153, 51, 153)); /* 紫色渐变 */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .lang-switch button:hover {
+            background: linear-gradient(135deg, rgb(80, 4, 90), rgb(102, 8, 116)); /* 更深的紫色 */
+        }
+        .banner {
+            background-color: rgba(153, 51, 153, 0.8); /* 稍浅紫色 */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .details div {
+            font-size: 18px;
+            background: linear-gradient(135deg, rgb(102, 8, 116), rgb(153, 51, 153)); /* 紫色渐变 */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        .details div:hover {
+            background: linear-gradient(135deg, rgb(80, 4, 90), rgb(102, 8, 116)); /* 更深的紫色 */
+        }
+        .container {
+            padding: 0 10px;
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h3 {
+            font-size: 22px;
+            border-bottom: 2px solid rgb(102, 8, 116); /* 清华紫 */
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        .agenda-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .agenda-column {
+            flex: 1;
+            margin: 0 10px;
+        }
+        .agenda-column h4 {
+            text-align: center;
+            color: rgb(102, 8, 116); /* 清华紫 */
+            border-bottom: 2px solid rgb(102, 8, 116);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .agenda-list {
+            list-style: none;
+            padding: 0;
+            font-size: 14px;
+        }
+        .agenda-list li {
+            background-color: #e0e0e0;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 5px;
+            line-height: 1.4;
+        }
+        .speaker-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        .speaker-item {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+            width: 22%;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+		
+        .speaker-item img {
+            border-radius: 10px; 
+            width: 103px;
+            height: 117px;
+            margin-bottom: 4px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .speaker-item h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: rgb(102, 8, 116); /* 清华紫 */
+        }
+        .speaker-item p {
+            font-size: 12px;
+            margin: 4px 0;
+        }
+        .organizers-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .organizer-item {
+            background-color: #f0f0f0; /* 和 speaker-item 一致 */
+			padding: 10px;
+			text-align: center;
+			width: 22%; /* 保持宽度一致 */
+			border-radius: 6px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+		.organizer-item p {
+			font-size: 12px; /* 和 speaker-item 的正文字体一致 */
+			margin: 4px 0;
+		}
+        .organization-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-top: 30px;
+            text-align: center;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            background-color: rgb(102, 8, 116); /* 清华紫 */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+		
+		.organizer-item img {
+		width: 100px;
+		height: 115px;
+		border-radius: 10px; /* 保持图片样式一致 */
+		margin-bottom: 4px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+		
+		/* AI安全 */
+		.ai-security {
+			background-color: #f0f9ff; /* 淡蓝色 */
+			border-left: 4px solid #2196f3; /* 蓝色边框 */
+			padding-left: 10px;
+		}
+
+		/* 区块链安全 */
+		.blockchain-security {
+			background-color: #f3f7e3; /* 淡绿色 */
+			border-left: 4px solid #4caf50; /* 绿色边框 */
+			padding-left: 10px;
+		}
+
+		/* 密码协议安全 */
+		.crypto-security {
+			background-color: #f9f0ff; /* 淡紫色 */
+			border-left: 4px solid #9c27b0; /* 紫色边框 */
+			padding-left: 10px;
+		}
+
+		/* 通用样式 */
+		.agenda-list li {
+			margin: 8px 0;
+			border-radius: 4px;
+			padding: 8px;
+			line-height: 1.4;
+			list-style: none;
+		}
+
+.tag {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 8px;
+    font-size: 12px;
+    color: white;
+    border-radius: 4px;
+    background-color: #4caf50; /* 默认绿色背景 */
+}
+
+/* 根据不同标签的小方向自定义颜色 */
+.ai-security .tag {
+    background-color: #2196f3; /* 蓝色表示AI安全 */
+}
+.blockchain-security .tag {
+    background-color: #4caf50; /* 绿色表示区块链安全 */
+}
+.crypto-security .tag {
+    background-color: #9c27b0; /* 紫色表示密码协议安全 */
+}
+
+.physics-security .tag {
+    background-color: #54534d; /* 紫色表示密码协议安全 */
+}
+
+.physics1-security .tag {
+    background-color: #993300; /* 紫色表示密码协议安全 */
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+    <h1>2024年清华大学高等研究院青年学者交叉论坛</h1>
+</header>
+
+<section class="banner">
+    <div class="details">
+        <div>日期：11月20日</div>
+        <div>地点：清华大学科学馆，322报告厅</div>
+    </div>
+</section>
+
+    <section id="home" class="section">
+        <h3>论坛介绍</h3>
+        <p>本论坛由清华大学<a href= "https://www.ias.tsinghua.edu.cn/">高等研究院</a>主办。高等研究院成立于1997年，以“创新、交叉、综合”为指导思想，倡导开拓性与科学首创精神，在物理、网络空间安全、天文等相关领域中，选择对探索自然规律有深远意义的、对未来科技发展可能产生重要影响的研究方向，追求卓越，开展纯粹的基础科学研究。青年学者交叉论坛旨在为不同领域的青年学者提供交流与合作的平台，共同探讨前沿科学问题，推动学术突破与创新。</p>
+    </section>
+
+
+	
+	<!-- 论坛议程 -->
+<section id="agenda" class="section">
+    <h3>论坛议程</h3>
+	
+    <!-- 开幕式 -->
+    <div class="agenda-container">
+        <div style="text-align: center; margin-bottom: 5px;">
+            <h4>08:45 - 09:00，清华大学高等研究院副院长 翁征宇教授致辞</h4>
+        </div>
+    </div>
+
+    <!-- 上午和下午议程 -->
+    <div class="agenda-container">
+        <!-- 左边栏：上午 -->
+			<div class="agenda-column">
+				<h4>上午议程</h4>
+				<ul class="agenda-list">
+					<li class="a">09:00 - 09:25 大模型越狱攻击 - 丛天硕 </li>
+					<li class="ai-">09:25 - 09:50 非平稳分布下的强化学习 - 罗宇 </li>
+					<li class="blockchain-">09:50 - 10:15 大规模区块链共识 - 王馨 </li>
+					<li><b>10:15 - 10:30 茶歇</b></li> <!-- 茶歇 -->
+					<li class="blockchain-">10:30 - 10:55 半同步拜占庭容错共识分析 - 隋笑 </li>
+					<li class="crypto-">10:55 - 11:20 两方隐私集合求并协议设计 - 张聪 </li>
+					<li class="crypto-">11:20 - 11:45 基于同态加密的同态秘密共享方案 - 黄泰榕 </li>
+				</ul>
+			</div>
+
+			<!-- 右边栏：下午 -->
+			<div class="agenda-column">
+				<h4>下午议程</h4>
+				<ul class="agenda-list">
+					<li class="ai-">13:00 - 13:25 木星系的形成 - 陈卓</li>
+					<li class="ai-">13:25 - 13:50 天体物理中的盘系统的磁流体数值模拟 - 王微晓</li>
+					<li class="blockchain-">13:50 - 14:15 量子纠错码的两个新结果 - 王亦许</li>
+					<li><b>14:15 - 14:30 茶歇</b></li> <!-- 茶歇 -->
+					<li class="physics-">14:30 - 14:55 湍流、Sachdev-Ye-Kitaev和路径积分 - 胡绪尧 </li>
+					<li class="physics1-">14:55 - 15:20 平带的构建及其微扰 - 常娜娜 </li>
+					<li class="crypto-">15:20 - 15:45 高阶元胞自动机生成的团簇态 - 李萌远</li>
+					<li class="crypto-">15:45 - 16:10 里德堡原子物理新进展 - 李成疏</li> 
+				</ul> 
+			</div>
+		</div>
+	</section>
+	
+
+    <!-- 演讲者介绍，每行4人，展示12个演讲者 -->
+    <section id="speakers" class="section">
+        <h3>演讲者介绍</h3>
+        <div class="speaker-grid">
+			<div class="speaker-item">
+                <img src="chenzhuo.jpg">
+                <h4>陈卓</h4>
+                <p>清华大学高等研究院 副研究员</p>
+                <p>研究领域：天体物理</p>
+            </div>
+			
+            <div class="speaker-item">
+                <img src="yixu.jpg">
+                <h4>王亦许</h4>
+                <p>清华大学高等研究院 博士后</p>
+                <p>研究领域：量子纠错与高能理论</p>
+            </div>
+			 <div class="speaker-item">
+                <img src="changnana.png">
+                <h4>常娜娜</h4>
+                <p>北京大学电子学院 博士后</p> 
+                <p>研究领域：凝聚态物理</p>
+            </div>
+		
+            <div class="speaker-item">
+                <img src="mengyuan.png">
+                <h4>李萌远</h4>
+                <p>清华大学高等研究院 博士后</p>
+                <p>研究领域：凝聚态物理</p>
+            </div>
+            <div class="speaker-item">
+                <img src="tianshuo.jpg">
+                <h4>丛天硕</h4>
+                <p>清华大学高等研究院 博士后</p>
+                <p>研究领域：人工智能安全</p>
+            </div>
+            <div class="speaker-item">
+                <img src="luoyu.jpg">
+                <h4>罗宇</h4>
+                <p>清华大学计算机科学与技术系 博士研究生</p>
+                <p>研究领域：强化学习</p>
+            </div>
+            <div class="speaker-item">
+                <img src="htr.jpg">
+                <h4>黄泰榕</h4>
+                <p>清华大学高等研究院 博士后</p>
+                <p>研究领域：全同态加密</p>
+            </div>
+            <div class="speaker-item">
+                <img src="wangxin.jpg">
+                <h4>王馨</h4>
+                <p>清华大学高等研究院 博士后</p>
+                <p>研究领域：区块链共识和分布式系统</p>
+            </div>
+            <div class="speaker-item">
+                <img src="suixiao.jpg">
+                <h4>隋笑</h4>
+                <p>清华大学高等研究院 博士后</p>
+                <p>研究领域：分布式共识与可证明安全理论</p>
+            </div>
+            <div class="speaker-item">
+                <img src="zhangcong.png">
+                <h4>张聪</h4>
+                <p>清华大学高等研究院 博士后</p>
+                <p>研究领域：安全多方计算</p>
+            </div>
+            
+            <div class="speaker-item">
+                <img src="xuyao.jpg">
+                <h4>胡绪尧</h4>
+                <p>清华大学高等研究院 博士后</p>
+                <p>研究领域：量子场论</p>
+            </div>
+           
+            <div class="speaker-item">
+                <img src="wxw.jpg">
+                <h4>王微晓</h4>
+                <p>清华大学高等研究院 博士后</p>
+                <p>研究领域：天体物理</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 组织者介绍 -->
+    <section id="organizers" class="section">
+    <h3>组织者介绍</h3>
+    <div class="organizers-grid">
+        <div class="organizer-item">
+            <img src="rujia.png" alt="李汝佳">
+            <h4>李汝佳</h4>
+            <p>清华大学高等研究院 博士后</p>
+            <p>研究领域：共识算法攻击、可信硬件应用</p>
+        </div>
+        <div class="organizer-item">
+            <img src="chenyi.jpg" alt="陈怡">
+            <h4>陈怡</h4>
+            <p>清华大学高等研究院 博士后</p>
+            <p>研究领域：密码学与人工智能</p>
+        </div>
+        <div class="organizer-item">
+            <img src="yixu.jpg" alt="王亦许">
+            <h4>王亦许</h4>
+            <p>清华大学高等研究院 博士后</p>
+            <p>研究领域：量子纠错与高能理论</p>
+        </div>
+        <div class="organizer-item">
+            <img src="chengshu.png" alt="李成疏">
+            <h4>李成疏</h4>
+            <p>清华大学高等研究院 副研究员</p>
+            <p>研究领域：量子多体物理</p>
+        </div>
+		</div>
+	</section>
+</div>
+
+<footer class="footer">
+    <p>© 2024 青年学者交叉论坛 | 清华大学高等研究院</p>
+</footer>
+
+</body>
+</html>
