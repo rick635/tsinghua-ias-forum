@@ -247,30 +247,15 @@
     .card,
     .speaker-card,
     .session-block,
-    .organizer-panel {
+    .organizer-card {
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .speaker-card:hover,
     .session-block:hover,
-    .organizer-panel:hover {
+    .organizer-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 16px 36px rgba(157, 31, 31, 0.09);
-    }
-
-    .card h3 {
-      color: var(--primary-dark);
-      font-size: 21px;
-      margin-bottom: 12px;
-    }
-
-    .card p,
-    .card li {
-      color: var(--muted);
-    }
-
-    .card ul {
-      padding-left: 20px;
     }
 
     .highlight {
@@ -282,83 +267,104 @@
       margin-top: 22px;
     }
 
-    .topics {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .topic {
-      background: white;
+    .session-block {
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px 20px;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
     }
 
-    .topic strong {
+    .session-block h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.35;
+    }
+
+    .schedule-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 16px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-time {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 14px;
+      white-space: nowrap;
+      line-height: 1.6;
+    }
+
+    .schedule-item strong {
       color: var(--primary-dark);
       display: block;
-      margin-bottom: 6px;
-    }
-
-    .timeline {
-      border-left: 3px solid var(--accent);
-      padding-left: 24px;
-    }
-
-    .timeline-item {
-      margin-bottom: 24px;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -33px;
-      top: 8px;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 3px solid white;
-      box-shadow: 0 0 0 2px var(--accent);
-    }
-
-    .timeline-item h3 {
-      color: var(--primary-dark);
-      font-size: 18px;
       margin-bottom: 4px;
+      font-size: 16px;
+      line-height: 1.45;
     }
 
-    .timeline-item p {
+    .schedule-item p {
       color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
     }
 
     .speaker-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 24px;
+    }
+
+    .speaker-group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
+    }
+
+    .speaker-group h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.35;
+    }
+
+    .speaker-list {
+      display: grid;
+      gap: 14px;
     }
 
     .speaker-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
-      min-height: 118px;
-    }
-
-    .speaker-meta {
       display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 14px;
+      align-items: center;
+      gap: 14px;
+      background: #fffdf8;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 15px 17px;
+      min-height: 86px;
     }
 
     .speaker-photo {
-      width: 70px;
-      height: 70px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
       background-color: #f4d37a;
       background-image: linear-gradient(135deg, #fff4dd, #f4d37a);
@@ -375,141 +381,123 @@
 
     .speaker-photo::before {
       content: "";
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='24' r='14' fill='%239d1f1f' opacity='0.88'/%3E%3Cpath d='M10 58c3.2-13.5 13-21 22-21s18.8 7.5 22 21' fill='%239d1f1f' opacity='0.88'/%3E%3C/svg%3E");
     }
 
-    .speaker-card h3 {
+    .speaker-card h4 {
       color: var(--primary-dark);
-      font-size: 20px;
-      margin-bottom: 2px;
+      font-size: 18px;
+      line-height: 1.35;
+      margin-bottom: 3px;
     }
 
     .speaker-card .affiliation {
       color: var(--muted);
       font-size: 14px;
-    }
-
-    .talk-title {
-      color: var(--primary-dark);
-      font-weight: 700;
-      margin: 10px 0 8px;
-    }
-
-    .speaker-card p {
-      color: var(--muted);
-    }
-
-    .session-block {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
-    }
-
-    .session-block h3 {
-      color: var(--primary-dark);
-      font-size: 21px;
-      margin-bottom: 14px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .schedule-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .schedule-item {
-      display: grid;
-      grid-template-columns: 104px 1fr;
-      gap: 16px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .schedule-item:last-child {
-      border-bottom: none;
-    }
-
-    .schedule-time {
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 14px;
-      white-space: nowrap;
-    }
-
-    .schedule-item strong {
-      color: var(--primary-dark);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .schedule-item p {
-      color: var(--muted);
-      font-size: 15px;
+      line-height: 1.45;
     }
 
     .organizer-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .organizer-card {
+      position: relative;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 22px;
+      padding: 28px;
       box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
       overflow: hidden;
     }
 
-    .organizer-row {
-      display: grid;
-      grid-template-columns: 180px 1fr;
+    .organizer-card::after {
+      content: "";
+      position: absolute;
+      right: -48px;
+      top: -48px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(201, 151, 59, 0.12);
+      pointer-events: none;
+    }
+
+    .organizer-card-header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
       border-bottom: 1px solid var(--border);
     }
 
-    .organizer-row:last-child {
-      border-bottom: none;
-    }
-
-    .organizer-label {
-      background: var(--accent-soft);
+    .organizer-card-title {
       color: var(--primary-dark);
-      font-weight: 700;
-      padding: 22px 24px;
-      border-right: 1px solid var(--border);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.3;
     }
 
-    .organizer-content {
-      padding: 22px 26px;
+    .organizer-card-subtitle {
       color: var(--muted);
-    }
-
-    .organizer-content strong {
-      color: var(--primary-dark);
+      font-size: 14px;
+      margin-top: 2px;
     }
 
     .organizer-list {
+      position: relative;
+      z-index: 1;
       display: grid;
-      gap: 12px;
+      gap: 14px;
     }
 
-    .organizer-person {
+    .organizer-item {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px 12px;
-      align-items: baseline;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fffdf8;
     }
 
-    .organizer-person .name {
+    .organizer-name {
       color: var(--primary-dark);
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 800;
+      line-height: 1.35;
     }
 
-    .organizer-person .meta {
+    .organizer-meta {
       color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      margin-top: 2px;
+    }
+
+    .organizer-badge {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+      border: 1px solid rgba(201, 151, 59, 0.22);
     }
 
     .cta {
@@ -589,13 +577,14 @@
         gap: 4px;
       }
 
-      .organizer-row {
+      .organizer-panel {
         grid-template-columns: 1fr;
       }
 
-      .organizer-label {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
+      .organizer-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
       }
 
       .cta {
@@ -661,7 +650,6 @@
   <main>
     <section class="hero">
       <div class="container hero-content">
-        <div class="tag">法定数字货币 · 智能合约 · 隐私保护 · 共识算法</div>
         <h1>法定数字货币智能合约安全与隐私保护技术论坛</h1>
         <p>
           法定数字货币智能合约是一种可编程支付工具，可将合同条款和业务规则转化为计算机代码，在满足预设条件时自动执行法定数字货币的支付与流转，实现合同履约的数字化、自动化和可追溯。作为我国法定数字货币的重要实践，数字人民币正在推动可编程支付、跨机构协同和可信价值流转等场景发展，对智能合约的安全性、隐私保护能力和可信运行机制提出了更高要求。
@@ -808,103 +796,84 @@
         </div>
 
         <div class="speaker-grid">
-          <div class="speaker-card">
-            <div class="speaker-meta">
-              <div class="speaker-photo">照片</div>
-              <div>
-                <h3>XXX</h3>
-                <div class="affiliation">中山大学</div>
-                <div class="affiliation">教授</div>
+          <div class="speaker-group">
+            <h3>隐私保护技术方向</h3>
+            <div class="speaker-list">
+              <div class="speaker-card">
+                <div class="speaker-photo">照片</div>
+                <div>
+                  <h4>XXX</h4>
+                  <div class="affiliation">中山大学 / 教授</div>
+                </div>
+              </div>
+              <div class="speaker-card">
+                <div class="speaker-photo">照片</div>
+                <div>
+                  <h4>XXX</h4>
+                  <div class="affiliation">北京理工大学 / 教授</div>
+                </div>
+              </div>
+              <div class="speaker-card">
+                <div class="speaker-photo">照片</div>
+                <div>
+                  <h4>XXX</h4>
+                  <div class="affiliation">北京航空航天大学 / 副教授</div>
+                </div>
+              </div>
+              <div class="speaker-card">
+                <div class="speaker-photo">照片</div>
+                <div>
+                  <h4>XXX</h4>
+                  <div class="affiliation">香港城市大学 / 副研究员</div>
+                </div>
+              </div>
+              <div class="speaker-card">
+                <div class="speaker-photo">照片</div>
+                <div>
+                  <h4>XXX</h4>
+                  <div class="affiliation">澳洲科学院 / 研究员</div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="speaker-card">
-            <div class="speaker-meta">
-              <div class="speaker-photo">照片</div>
-              <div>
-                <h3>XXX</h3>
-                <div class="affiliation">北京理工大学</div>
-                <div class="affiliation">教授</div>
+
+          <div class="speaker-group">
+            <h3>共识算法方向</h3>
+            <div class="speaker-list">
+              <div class="speaker-card">
+                <div class="speaker-photo">照片</div>
+                <div>
+                  <h4>XXX</h4>
+                  <div class="affiliation">上海大学 / 助理教授</div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="speaker-card">
-            <div class="speaker-meta">
-              <div class="speaker-photo">照片</div>
-              <div>
-                <h3>XXX</h3>
-                <div class="affiliation">北京航空航天大学</div>
-                <div class="affiliation">副教授</div>
+              <div class="speaker-card">
+                <div class="speaker-photo">照片</div>
+                <div>
+                  <h4>XXX</h4>
+                  <div class="affiliation">暨南大学 / 助理教授</div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="speaker-card">
-            <div class="speaker-meta">
-              <div class="speaker-photo">照片</div>
-              <div>
-                <h3>XXX</h3>
-                <div class="affiliation">香港城市大学</div>
-                <div class="affiliation">副研究员</div>
+              <div class="speaker-card">
+                <div class="speaker-photo">照片</div>
+                <div>
+                  <h4>XXX</h4>
+                  <div class="affiliation">山东大学 / 助理教授</div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="speaker-card">
-            <div class="speaker-meta">
-              <div class="speaker-photo">照片</div>
-              <div>
-                <h3>XXX</h3>
-                <div class="affiliation">澳洲科学院</div>
-                <div class="affiliation">研究员</div>
+              <div class="speaker-card">
+                <div class="speaker-photo">照片</div>
+                <div>
+                  <h4>XXX</h4>
+                  <div class="affiliation">清华大学 / 助理研究员</div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="speaker-card">
-            <div class="speaker-meta">
-              <div class="speaker-photo">照片</div>
-              <div>
-                <h3>XXX</h3>
-                <div class="affiliation">上海大学</div>
-                <div class="affiliation">助理教授</div>
-              </div>
-            </div>
-          </div>
-          <div class="speaker-card">
-            <div class="speaker-meta">
-              <div class="speaker-photo">照片</div>
-              <div>
-                <h3>XXX</h3>
-                <div class="affiliation">暨南大学</div>
-                <div class="affiliation">助理教授</div>
-              </div>
-            </div>
-          </div>
-          <div class="speaker-card">
-            <div class="speaker-meta">
-              <div class="speaker-photo">照片</div>
-              <div>
-                <h3>XXX</h3>
-                <div class="affiliation">山东大学</div>
-                <div class="affiliation">助理教授</div>
-              </div>
-            </div>
-          </div>
-          <div class="speaker-card">
-            <div class="speaker-meta">
-              <div class="speaker-photo">照片</div>
-              <div>
-                <h3>XXX</h3>
-                <div class="affiliation">清华大学</div>
-                <div class="affiliation">助理研究员</div>
-              </div>
-            </div>
-          </div>
-          <div class="speaker-card">
-            <div class="speaker-meta">
-              <div class="speaker-photo">照片</div>
-              <div>
-                <h3>XXX</h3>
-                <div class="affiliation">天津大学</div>
-                <div class="affiliation">助理研究员</div>
+              <div class="speaker-card">
+                <div class="speaker-photo">照片</div>
+                <div>
+                  <h4>XXX</h4>
+                  <div class="affiliation">天津大学 / 助理研究员</div>
+                </div>
               </div>
             </div>
           </div>
@@ -923,30 +892,54 @@
         </div>
 
         <div class="organizer-panel">
-          <div class="organizer-row">
-            <div class="organizer-label">组织单位</div>
-            <div class="organizer-content organizer-list">
-              <div class="organizer-person">
-                <span class="name">清华大学</span>
-                <span class="meta">主办单位</span>
+          <div class="organizer-card">
+            <div class="organizer-card-header">
+              <div>
+                <div class="organizer-card-title">组织单位</div>
+                <div class="organizer-card-subtitle">Forum Hosts</div>
               </div>
-              <div class="organizer-person">
-                <span class="name">中国人民银行数字货币研究所</span>
-                <span class="meta">协助组织单位</span>
+            </div>
+
+            <div class="organizer-list">
+              <div class="organizer-item">
+                <div>
+                  <div class="organizer-name">清华大学</div>
+                  <div class="organizer-meta">负责论坛组织与学术交流安排</div>
+                </div>
+                <span class="organizer-badge">主办单位</span>
+              </div>
+
+              <div class="organizer-item">
+                <div>
+                  <div class="organizer-name">中国人民银行数字货币研究所</div>
+                  <div class="organizer-meta">协助推进法定数字货币相关技术交流</div>
+                </div>
+                <span class="organizer-badge">协助组织单位</span>
               </div>
             </div>
           </div>
 
-          <div class="organizer-row">
-            <div class="organizer-label">组织者</div>
-            <div class="organizer-content organizer-list">
-              <div class="organizer-person">
-                <span class="name">XXX</span>
-                <span class="meta">清华大学 / 副研究员</span>
+          <div class="organizer-card">
+            <div class="organizer-card-header">
+              <div>
+                <div class="organizer-card-title">组织者</div>
+                <div class="organizer-card-subtitle">Forum Organizers</div>
               </div>
-              <div class="organizer-person">
-                <span class="name">XXX</span>
-                <span class="meta">中国人民银行数字货币研究所</span>
+            </div>
+
+            <div class="organizer-list">
+              <div class="organizer-item">
+                <div>
+                  <div class="organizer-name">XXX</div>
+                  <div class="organizer-meta">清华大学 / 副研究员</div>
+                </div>
+              </div>
+
+              <div class="organizer-item">
+                <div>
+                  <div class="organizer-name">XXX</div>
+                  <div class="organizer-meta">中国人民银行数字货币研究所</div>
+                </div>
               </div>
             </div>
           </div>
