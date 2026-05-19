@@ -326,29 +326,11 @@
     .speaker-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .speaker-group {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 26px;
-      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
-    }
-
-    .speaker-group h3 {
-      color: var(--primary-dark);
-      font-size: 21px;
-      margin-bottom: 18px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--border);
-      line-height: 1.35;
+      gap: 16px;
     }
 
     .speaker-list {
-      display: grid;
-      gap: 14px;
+      display: contents;
     }
 
     .speaker-card {
@@ -366,27 +348,17 @@
       width: 58px;
       height: 58px;
       border-radius: 50%;
-      background-color: #f4d37a;
-      background-image: linear-gradient(135deg, #fff4dd, #f4d37a);
       border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: transparent;
-      font-size: 0;
       flex: 0 0 auto;
       overflow: hidden;
-      position: relative;
+      background: #f4d37a;
     }
 
-    .speaker-photo::before {
-      content: "";
-      width: 36px;
-      height: 36px;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='24' r='14' fill='%239d1f1f' opacity='0.88'/%3E%3Cpath d='M10 58c3.2-13.5 13-21 22-21s18.8 7.5 22 21' fill='%239d1f1f' opacity='0.88'/%3E%3C/svg%3E");
+    .speaker-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
     }
 
     .speaker-card h4 {
@@ -796,85 +768,83 @@
         </div>
 
         <div class="speaker-grid">
-          <div class="speaker-group">
-            <h3>隐私保护技术方向</h3>
-            <div class="speaker-list">
-              <div class="speaker-card">
-                <div class="speaker-photo">照片</div>
-                <div>
-                  <h4>XXX</h4>
-                  <div class="affiliation">中山大学 / 教授</div>
-                </div>
-              </div>
-              <div class="speaker-card">
-                <div class="speaker-photo">照片</div>
-                <div>
-                  <h4>XXX</h4>
-                  <div class="affiliation">北京理工大学 / 教授</div>
-                </div>
-              </div>
-              <div class="speaker-card">
-                <div class="speaker-photo">照片</div>
-                <div>
-                  <h4>XXX</h4>
-                  <div class="affiliation">北京航空航天大学 / 副教授</div>
-                </div>
-              </div>
-              <div class="speaker-card">
-                <div class="speaker-photo">照片</div>
-                <div>
-                  <h4>XXX</h4>
-                  <div class="affiliation">香港城市大学 / 副研究员</div>
-                </div>
-              </div>
-              <div class="speaker-card">
-                <div class="speaker-photo">照片</div>
-                <div>
-                  <h4>XXX</h4>
-                  <div class="affiliation">澳洲科学院 / 研究员</div>
-                </div>
-              </div>
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/wangqin.jpg" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4>王沁</h4>
+              <div class="affiliation">CSIRO Data61 / 研究员 </div>
             </div>
           </div>
 
-          <div class="speaker-group">
-            <h3>共识算法方向</h3>
-            <div class="speaker-list">
-              <div class="speaker-card">
-                <div class="speaker-photo">照片</div>
-                <div>
-                  <h4>XXX</h4>
-                  <div class="affiliation">上海大学 / 助理教授</div>
-                </div>
-              </div>
-              <div class="speaker-card">
-                <div class="speaker-photo">照片</div>
-                <div>
-                  <h4>XXX</h4>
-                  <div class="affiliation">暨南大学 / 助理教授</div>
-                </div>
-              </div>
-              <div class="speaker-card">
-                <div class="speaker-photo">照片</div>
-                <div>
-                  <h4>XXX</h4>
-                  <div class="affiliation">山东大学 / 助理教授</div>
-                </div>
-              </div>
-              <div class="speaker-card">
-                <div class="speaker-photo">照片</div>
-                <div>
-                  <h4>XXX</h4>
-                  <div class="affiliation">清华大学 / 助理研究员</div>
-                </div>
-              </div>
-              <div class="speaker-card">
-                <div class="speaker-photo">照片</div>
-                <div>
-                  <h4>XXX</h4>
-                  <div class="affiliation">天津大学 / 助理研究员</div>
-                </div>
-              </div>
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/profile_niu_new.jpg" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4>牛健宇</h4>
+              <div class="affiliation">香港城市大学 / 助理研究员</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="images/speaker-placeholder.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4>XXX</h4>
+              <div class="affiliation">北京航空航天大学 / 副教授</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="images/speaker-placeholder.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4>XXX</h4>
+              <div class="affiliation">香港城市大学 / 副研究员</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="images/speaker-placeholder.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4>XXX</h4>
+              <div class="affiliation">澳洲科学院 / 研究员</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="images/speaker-placeholder.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4>XXX</h4>
+              <div class="affiliation">上海大学 / 助理教授</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="images/speaker-placeholder.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4>XXX</h4>
+              <div class="affiliation">暨南大学 / 助理教授</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="images/speaker-placeholder.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4>XXX</h4>
+              <div class="affiliation">山东大学 / 助理教授</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="images/speaker-placeholder.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4>XXX</h4>
+              <div class="affiliation">清华大学 / 助理研究员</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="images/speaker-placeholder.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4>XXX</h4>
+              <div class="affiliation">天津大学 / 助理研究员</div>
             </div>
           </div>
         </div>
