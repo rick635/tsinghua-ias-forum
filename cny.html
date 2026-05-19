@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>法定数字货币智能合约安全与隐私保护技术论坛</title>
+  <style>
+    :root {
+      --primary: #9d1f1f;
+      --primary-dark: #6f1212;
+      --accent: #c9973b;
+      --accent-soft: #fff4dd;
+      --bg: #fffaf3;
+      --text: #2b2520;
+      --muted: #6f6257;
+      --card: #ffffff;
+      --border: #eadfce;
+      --gold-light: #f7d98a;
+      --rmb-red: #b32121;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.78;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(201, 151, 59, 0.55);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--border);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 18px;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      background-color: #8a1a1a;
+      background-image: radial-gradient(circle at 82% 18%, rgba(247, 217, 138, 0.28), transparent 30%),
+                        linear-gradient(135deg, #6f1212 0%, #9d1f1f 52%, #c9973b 120%);
+      color: white;
+      padding: 86px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "¥";
+      position: absolute;
+      right: -80px;
+      top: -150px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(247, 217, 138, 0.16);
+      color: rgba(255, 255, 255, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 260px;
+      font-weight: 700;
+      font-family: Georgia, serif;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 22px;
+      color: #fff1c7;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.18;
+      margin-bottom: 22px;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: #fff2df;
+      max-width: 820px;
+      margin-bottom: 24px;
+    }
+
+    .hero p strong {
+      color: #fff7d6;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      margin-bottom: 32px;
+      max-width: 780px;
+    }
+
+    .section-title span {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      color: var(--primary-dark);
+      margin: 8px 0 12px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
+    }
+
+    .card,
+    .speaker-card,
+    .session-block,
+    .organizer-panel {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .speaker-card:hover,
+    .session-block:hover,
+    .organizer-panel:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(157, 31, 31, 0.09);
+    }
+
+    .card h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .card ul {
+      padding-left: 20px;
+    }
+
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 22px 24px;
+      border-radius: 12px;
+      color: #27445a;
+      margin-top: 22px;
+    }
+
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .topic {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+
+    .topic strong {
+      color: var(--primary-dark);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .timeline {
+      border-left: 3px solid var(--accent);
+      padding-left: 24px;
+    }
+
+    .timeline-item {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -33px;
+      top: 8px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .timeline-item h3 {
+      color: var(--primary-dark);
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    .speaker-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .speaker-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
+      min-height: 118px;
+    }
+
+    .speaker-meta {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .speaker-photo {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: #f4d37a;
+      background-image: linear-gradient(135deg, #fff4dd, #f4d37a);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: transparent;
+      font-size: 0;
+      flex: 0 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .speaker-photo::before {
+      content: "";
+      width: 44px;
+      height: 44px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='24' r='14' fill='%239d1f1f' opacity='0.88'/%3E%3Cpath d='M10 58c3.2-13.5 13-21 22-21s18.8 7.5 22 21' fill='%239d1f1f' opacity='0.88'/%3E%3C/svg%3E");
+    }
+
+    .speaker-card h3 {
+      color: var(--primary-dark);
+      font-size: 20px;
+      margin-bottom: 2px;
+    }
+
+    .speaker-card .affiliation {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .talk-title {
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin: 10px 0 8px;
+    }
+
+    .speaker-card p {
+      color: var(--muted);
+    }
+
+    .session-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
+    }
+
+    .session-block h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .schedule-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 104px 1fr;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-time {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .schedule-item strong {
+      color: var(--primary-dark);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .schedule-item p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .organizer-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
+      overflow: hidden;
+    }
+
+    .organizer-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .organizer-row:last-child {
+      border-bottom: none;
+    }
+
+    .organizer-label {
+      background: var(--accent-soft);
+      color: var(--primary-dark);
+      font-weight: 700;
+      padding: 22px 24px;
+      border-right: 1px solid var(--border);
+    }
+
+    .organizer-content {
+      padding: 22px 26px;
+      color: var(--muted);
+    }
+
+    .organizer-content strong {
+      color: var(--primary-dark);
+    }
+
+    .organizer-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .organizer-person {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      align-items: baseline;
+    }
+
+    .organizer-person .name {
+      color: var(--primary-dark);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .organizer-person .meta {
+      color: var(--muted);
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #7d1515, #b32121 58%, #c9973b);
+      color: white;
+      border-radius: 24px;
+      padding: 42px;
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .cta h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: #e2f2ef;
+      max-width: 720px;
+    }
+
+    footer {
+      background: #6f1212;
+      color: #f3dfc8;
+      padding: 34px 0;
+      font-size: 14px;
+    }
+
+    footer .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .logo {
+        white-space: normal;
+        line-height: 1.35;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        font-size: 14px;
+      }
+
+      .hero {
+        padding: 64px 0 58px;
+      }
+
+      .hero::after {
+        right: -160px;
+        top: -180px;
+        opacity: 0.75;
+      }
+
+      .grid-3,
+      .grid-2,
+      .topics,
+      .speaker-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .schedule-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .organizer-row {
+        grid-template-columns: 1fr;
+      }
+
+      .organizer-label {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p,
+      .section-title p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 52px 0;
+      }
+
+      .speaker-meta {
+        gap: 12px;
+      }
+
+      .speaker-photo {
+        width: 58px;
+        height: 58px;
+      }
+
+      .speaker-photo::before {
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">法定数字货币智能合约安全与隐私保护技术论坛</div>
+      <nav class="nav-links">
+        <a href="#program">会议日程</a>
+        <a href="#speakers">演讲者介绍</a>
+        <a href="#organizers">组织信息</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="tag">法定数字货币 · 智能合约 · 隐私保护 · 共识算法</div>
+        <h1>法定数字货币智能合约安全与隐私保护技术论坛</h1>
+        <p>
+          法定数字货币智能合约是一种可编程支付工具，可将合同条款和业务规则转化为计算机代码，在满足预设条件时自动执行法定数字货币的支付与流转，实现合同履约的数字化、自动化和可追溯。作为我国法定数字货币的重要实践，数字人民币正在推动可编程支付、跨机构协同和可信价值流转等场景发展，对智能合约的安全性、隐私保护能力和可信运行机制提出了更高要求。
+        </p>
+        <p>
+          智能合约的公开执行机制可能带来合约状态、交易身份、执行规则和敏感数据泄露等风险。如何在可验证、可监管、可追溯的基础上实现可控、可用、可保护的安全与隐私保障，是法定数字货币智能合约走向真实应用必须解决的关键问题。本论坛围绕“隐私保护技术”和“共识算法”两类主题展开，聚焦安全模型、隐私资源管理、密码协议、可信硬件、共识机制与系统架构，推动形成面向可信数字金融基础设施的关键技术交流平台。
+        </p>
+        <p>
+          <strong>会议时间：</strong>2026年5月29日—5月30日　<strong>会议地点：</strong>清华大学科学馆 322报告厅<br />
+          <strong>报到时间：</strong>2026年5月29日　<strong>会议形式：</strong>线上线下结合
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#program">查看会议日程</a>
+          <a class="btn btn-outline" href="#organizers">组织信息</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="program">
+      <div class="container">
+        <div class="section-title">
+          <span>Program</span>
+          <h2>会议日程</h2>
+          <p>
+            会议时间为 2026年5月29日—5月30日，5月29日报到，地点为清华大学科学馆 322报告厅，采用线上线下结合的混合形式。论坛拟设置 10 场专题报告，围绕“法定数字货币智能合约隐私保护技术”和“支撑可信运行的共识算法”两类主题展开，上午 5 场、下午 5 场。
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="session-block">
+            <h3>上午场：法定数字货币智能合约隐私保护技术</h3>
+            <div class="schedule-list">
+              <div class="schedule-item">
+                <div class="schedule-time">09:00–09:10</div>
+                <div>
+                  <strong>开幕致辞</strong>
+                  <p>介绍论坛背景、主题和会议安排。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">09:10–09:40</div>
+                <div>
+                  <strong>XXX：报告题目待定</strong>
+                  <p>中山大学，教授，报告摘要待补充。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">09:40–10:10</div>
+                <div>
+                  <strong>XXX：报告题目待定</strong>
+                  <p>北京理工大学，教授，报告摘要待补充。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">10:10–10:30</div>
+                <div>
+                  <strong>茶歇与交流</strong>
+                  <p>自由交流与合影安排。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">10:30–11:00</div>
+                <div>
+                  <strong>XXX：报告题目待定</strong>
+                  <p>北京航空航天大学，副教授，报告摘要待补充。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">11:00–11:30</div>
+                <div>
+                  <strong>XXX：报告题目待定</strong>
+                  <p>香港城市大学，副研究员，报告摘要待补充。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">11:30–12:00</div>
+                <div>
+                  <strong>XXX：报告题目待定</strong>
+                  <p>澳洲科学院，研究员，报告摘要待补充。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="session-block">
+            <h3>下午场：支撑可信运行的共识算法</h3>
+            <div class="schedule-list">
+              <div class="schedule-item">
+                <div class="schedule-time">14:00–14:30</div>
+                <div>
+                  <strong>XXX：报告题目待定</strong>
+                  <p>上海大学，助理教授，报告摘要待补充。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">14:30–15:00</div>
+                <div>
+                  <strong>XXX：报告题目待定</strong>
+                  <p>暨南大学，助理教授，报告摘要待补充。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">15:00–15:30</div>
+                <div>
+                  <strong>XXX：报告题目待定</strong>
+                  <p>山东大学，助理教授，报告摘要待补充。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">15:30–15:50</div>
+                <div>
+                  <strong>茶歇与交流</strong>
+                  <p>自由交流与会间讨论。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">15:50–16:20</div>
+                <div>
+                  <strong>XXX：报告题目待定</strong>
+                  <p>清华大学，助理研究员，报告摘要待补充。</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">16:20–16:50</div>
+                <div>
+                  <strong>XXX：报告题目待定</strong>
+                  <p>天津大学，助理研究员，报告摘要待补充。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="speakers" style="background: #fff;">
+      <div class="container">
+        <div class="section-title">
+          <span>Speakers</span>
+          <h2>演讲者介绍</h2>
+          <p>
+            本论坛拟邀请 10 位专家学者作专题报告，报告主题主要围绕法定数字货币智能合约隐私保护技术与支撑可信运行的共识算法展开。以下为演讲者信息展示位，后续可补充照片、个人简介和报告题目。
+          </p>
+        </div>
+
+        <div class="speaker-grid">
+          <div class="speaker-card">
+            <div class="speaker-meta">
+              <div class="speaker-photo">照片</div>
+              <div>
+                <h3>XXX</h3>
+                <div class="affiliation">中山大学</div>
+                <div class="affiliation">教授</div>
+              </div>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-meta">
+              <div class="speaker-photo">照片</div>
+              <div>
+                <h3>XXX</h3>
+                <div class="affiliation">北京理工大学</div>
+                <div class="affiliation">教授</div>
+              </div>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-meta">
+              <div class="speaker-photo">照片</div>
+              <div>
+                <h3>XXX</h3>
+                <div class="affiliation">北京航空航天大学</div>
+                <div class="affiliation">副教授</div>
+              </div>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-meta">
+              <div class="speaker-photo">照片</div>
+              <div>
+                <h3>XXX</h3>
+                <div class="affiliation">香港城市大学</div>
+                <div class="affiliation">副研究员</div>
+              </div>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-meta">
+              <div class="speaker-photo">照片</div>
+              <div>
+                <h3>XXX</h3>
+                <div class="affiliation">澳洲科学院</div>
+                <div class="affiliation">研究员</div>
+              </div>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-meta">
+              <div class="speaker-photo">照片</div>
+              <div>
+                <h3>XXX</h3>
+                <div class="affiliation">上海大学</div>
+                <div class="affiliation">助理教授</div>
+              </div>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-meta">
+              <div class="speaker-photo">照片</div>
+              <div>
+                <h3>XXX</h3>
+                <div class="affiliation">暨南大学</div>
+                <div class="affiliation">助理教授</div>
+              </div>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-meta">
+              <div class="speaker-photo">照片</div>
+              <div>
+                <h3>XXX</h3>
+                <div class="affiliation">山东大学</div>
+                <div class="affiliation">助理教授</div>
+              </div>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-meta">
+              <div class="speaker-photo">照片</div>
+              <div>
+                <h3>XXX</h3>
+                <div class="affiliation">清华大学</div>
+                <div class="affiliation">助理研究员</div>
+              </div>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-meta">
+              <div class="speaker-photo">照片</div>
+              <div>
+                <h3>XXX</h3>
+                <div class="affiliation">天津大学</div>
+                <div class="affiliation">助理研究员</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="organizers" style="background: #fffaf3;">
+      <div class="container">
+        <div class="section-title">
+          <span>Organizers</span>
+          <h2>组织信息</h2>
+          <p>
+            本论坛由清华大学组织，中国人民银行数字货币研究所协助组织，采用线上线下结合的混合形式，围绕法定数字货币智能合约隐私保护、隐私资源管理、安全架构与共识算法等关键问题开展专题交流。
+          </p>
+        </div>
+
+        <div class="organizer-panel">
+          <div class="organizer-row">
+            <div class="organizer-label">组织单位</div>
+            <div class="organizer-content organizer-list">
+              <div class="organizer-person">
+                <span class="name">清华大学</span>
+                <span class="meta">主办单位</span>
+              </div>
+              <div class="organizer-person">
+                <span class="name">中国人民银行数字货币研究所</span>
+                <span class="meta">协助组织单位</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="organizer-row">
+            <div class="organizer-label">组织者</div>
+            <div class="organizer-content organizer-list">
+              <div class="organizer-person">
+                <span class="name">XXX</span>
+                <span class="meta">清华大学 / 副研究员</span>
+              </div>
+              <div class="organizer-person">
+                <span class="name">XXX</span>
+                <span class="meta">中国人民银行数字货币研究所</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>© 法定数字货币智能合约安全与隐私保护技术论坛</div>
+      <div>清华大学 · 中国人民银行数字货币研究所</div>
+    </div>
+  </footer>
+</body>
+</html>
