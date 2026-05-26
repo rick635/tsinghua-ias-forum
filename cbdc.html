@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>法定数字货币安全与隐私保护论坛</title>
+  <style>
+    :root {
+      --primary: #9d1f1f;
+      --primary-dark: #6f1212;
+      --accent: #c9973b;
+      --accent-soft: #fff4dd;
+      --bg: #fffaf3;
+      --text: #2b2520;
+      --muted: #6f6257;
+      --card: #ffffff;
+      --border: #eadfce;
+      --gold-light: #f7d98a;
+      --rmb-red: #b32121;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.78;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(201, 151, 59, 0.55);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--border);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      color: var(--primary);
+      font-size: 18px;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      background-color: #8a1a1a;
+      background-image: radial-gradient(circle at 82% 18%, rgba(247, 217, 138, 0.28), transparent 30%),
+                        linear-gradient(135deg, #6f1212 0%, #9d1f1f 52%, #c9973b 120%);
+      color: white;
+      padding: 86px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 850px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 22px;
+      color: #fff1c7;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.18;
+      margin-bottom: 22px;
+      letter-spacing: -0.02em;
+      font-weight: 800;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: #fff2df;
+      max-width: 820px;
+      margin-bottom: 24px;
+    }
+
+    .hero p strong {
+      color: #fff7d6;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: white;
+      color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      margin-bottom: 32px;
+      max-width: 780px;
+    }
+
+    .section-title span {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      color: var(--primary-dark);
+      margin: 8px 0 12px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
+    }
+
+    .card,
+    .speaker-card,
+    .session-block,
+    .organizer-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .speaker-card:hover,
+    .session-block:hover,
+    .organizer-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(157, 31, 31, 0.09);
+    }
+
+    .highlight {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 22px 24px;
+      border-radius: 12px;
+      color: #27445a;
+      margin-top: 22px;
+    }
+
+    .session-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 12px 30px rgba(157, 31, 31, 0.07);
+    }
+
+    .session-block h3 {
+      color: var(--primary-dark);
+      font-size: 21px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.35;
+    }
+
+    .schedule-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 16px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-time {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 14px;
+      white-space: nowrap;
+      line-height: 1.6;
+    }
+
+    .schedule-item strong {
+      color: var(--primary-dark);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .schedule-item p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .speaker-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .speaker-list {
+      display: contents;
+    }
+
+    .speaker-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #fffdf8;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 15px 17px;
+      min-height: 86px;
+    }
+
+    .speaker-photo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      flex: 0 0 auto;
+      overflow: hidden;
+      background: #f4d37a;
+    }
+
+    .speaker-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .speaker-card h4 {
+      color: var(--primary-dark);
+      font-size: 18px;
+      line-height: 1.35;
+      margin-bottom: 3px;
+    }
+
+    .speaker-card .affiliation {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .organizer-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 14px 34px rgba(157, 31, 31, 0.07);
+      overflow: hidden;
+    }
+
+    .organizer-band {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      align-items: stretch;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .organizer-band:last-child {
+      border-bottom: none;
+    }
+
+    .organizer-label {
+      background: linear-gradient(180deg, #fff4dd 0%, #fffaf3 100%);
+      border-right: 1px solid var(--border);
+      padding: 28px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .organizer-label-title {
+      color: var(--primary-dark);
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .organizer-label-subtitle {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .organizer-content {
+      padding: 26px 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    .host-name {
+      color: var(--primary-dark);
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .host-note {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    .committee-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .committee-member {
+      padding: 4px 0 4px 18px;
+      border-left: 3px solid rgba(201, 151, 59, 0.52);
+    }
+
+    .committee-name {
+      color: var(--primary-dark);
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .committee-affiliation {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 4px;
+      line-height: 1.45;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #7d1515, #b32121 58%, #c9973b);
+      color: white;
+      border-radius: 24px;
+      padding: 42px;
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .cta h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: #e2f2ef;
+      max-width: 720px;
+    }
+
+    footer {
+      background: #6f1212;
+      color: #f3dfc8;
+      padding: 34px 0;
+      font-size: 14px;
+    }
+
+    footer .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .logo {
+        white-space: normal;
+        line-height: 1.35;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        font-size: 14px;
+      }
+
+      .hero {
+        padding: 64px 0 58px;
+      }
+
+
+      .grid-3,
+      .grid-2,
+      .topics,
+      .speaker-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .organizer-band {
+        grid-template-columns: 1fr;
+      }
+
+      .organizer-label {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 22px 24px;
+      }
+
+      .organizer-content {
+        padding: 22px 24px;
+      }
+
+      .committee-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .schedule-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .organizer-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .organizer-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p,
+      .section-title p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 52px 0;
+      }
+
+      .speaker-meta {
+        gap: 12px;
+      }
+
+      .speaker-photo {
+        width: 58px;
+        height: 58px;
+      }
+
+      .speaker-photo::before {
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo"><a href = "https://tsinghua-ias-forum.com/cny.html">法定数字货币安全与隐私保护论坛</a></div>
+      <nav class="nav-links">
+        <a href="#program">会议日程</a>
+        <a href="#speakers">演讲者介绍</a>
+        <a href="#organizers">组织信息</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>第一届法定数字货币安全与隐私保护论坛</h1>
+        <p>
+法定数字货币是数字经济和数字金融基础设施的重要组成部分，对提升支付体系效率、支撑跨机构协同、促进可信价值流转具有重要意义。随着自动化交易、智能化金融服务和跨主体协作场景不断拓展，法定数字货币对系统安全、隐私保护、可信运行和监管支撑能力提出了更高要求。
+        </p>
+        
+     <p>
+法定数字货币的安全与隐私保护涉及密码技术、智能合约、可信执行、共识机制、数据保护和监管可追溯等关键方向。如何在保障安全可信、隐私可控和业务可用的同时，支撑合规监管与规模化应用，是推动法定数字货币高质量发展的重要技术问题。
+        </p>
+        
+        <p>
+        本论坛聚焦法定数字货币安全与隐私保护，围绕关键技术、应用场景和发展趋势开展交流，旨在推动形成面向可信数字金融基础设施的长期交流平台，为我国数字金融安全能力建设提供技术支撑。
+        </p>
+        <p>
+          <strong>会议时间：</strong>2026年5月29日—5月30日　<strong>会议地点：</strong>清华大学科学馆 322报告厅<br />
+          <strong>报到时间：</strong>2026年5月29日　<strong>会议形式：</strong>线上线下结合
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#program">查看会议日程</a>
+          <a class="btn btn-outline" href="#organizers">组织信息</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="program">
+      <div class="container">
+        <div class="section-title"> 
+          <span>Program</span>
+          <h2>会议日程</h2>
+          <p>
+           以下为论坛正式会议日程，具体安排以现场通知为准。
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="session-block">
+            <h3>上午场</h3>
+            <div class="schedule-list">
+              <div class="schedule-item">
+                <div class="schedule-time">09:00–09:10</div>
+                <div>
+                  <strong>开幕致辞</strong>
+                  <p>介绍论坛背景、主题和会议安排。</p>
+                </div>
+              </div>
+              
+              <div class="schedule-item">
+                <div class="schedule-time">09:10–09:35</div>
+                <div>
+                  <strong>坎特伯雷大学 冯翰文：异步环境下通信最优的分布式公共随机数生成协议</strong>
+                  <p>分布式公共随机数生成（Distributed Common Coin Generation），即如何让分布式网络中的各个节点通过执行协议，获得同一个均匀分布且不可预测的随机数，是密码学与分布式计算领域的核心问题之一。在区块链系统中，领导者选举（leader election）、分片（sharding）等关键技术组件，往往都依赖于此类公共随机数来实现。
+随着区块链系统的大规模部署，如何在大规模网络环境下实现高效的分布式随机数生成，成为了学术界和工业界共同关注的焦点。然而，尽管该问题已有几十年的研究历史并积累了大量解决方案，但此前所有安全的方案都会产生至少呈网络节点数三次方（$O(n^3)$）的通信开销，难以在实际的中大规模网络中部署应用。
+在本次报告中，我们将介绍首个不依赖私有初始化的通信复杂度仅为平方级（$O(n^2)$）的异步公共随机数协议。我们的协议具备适应性安全性（adaptive security），能够容忍高达三分之一的节点被攻击者控制。在该模型下，平方级的通信开销已经达到了理论上的最优下界。</p>
+                </div>
+              </div>
+              
+           <div class="schedule-item">
+                <div class="schedule-time">09:10–09:35</div>
+                <div>
+                  <strong>清华大学 房智轩：面向智能体推理服务的可信验证与原子交付 </strong> 
+                  <p>随着智能体开始自主调用第三方大模型 API，推理服务正从传统的黑箱调用转变为一种高频、细粒度、按次计费的链下服务交易。这一变化为区块链系统带来了新的可信验证与原子交付问题：一方面，用户需要判断服务商是否真实使用了承诺模型，而非通过小模型或低精度模型降低成本；另一方面，用户与服务商需要在弱信任环境中实现“有效结果交付”与“支付释放”的公平绑定。本报告围绕这一问题，介绍两个相互衔接的工作：首先，通过用户侧模型一致性监测，利用 logits-based token confidence 为推理服务质量提供轻量级验证信号；其次，通过 PACE 原子交付框架，基于支付通道与 secret reveal 机制，将结果解密与支付结算绑定为同一事件，并通过可插拔验证层支持不同强度的服务验证。整体上，这两个工作尝试把智能体推理服务从黑箱 API 调用转化为可验证、可交付、可结算的可信服务交易。</p>
+                </div>
+              </div>
+              
+              <div class="schedule-item">
+                <div class="schedule-time">10:00–10:15</div>
+                <div>
+                  <strong>茶歇与交流</strong>
+                  <p>自由交流与合影安排。</p>
+                </div>
+              </div>
+              
+                 <div class="schedule-item">
+                <div class="schedule-time">10:15–10:40</div>
+                <div>
+                  <strong>北京理工大学 左聪：面向智能合约隐私保护的具有前向和后向安全的联合查询对称可搜索加密方案</strong>
+                  <p>随着区块链与智能合约技术的广泛应用，智能合约中存储和处理的数据隐私保护问题日益突出。对称可搜索加密（Searchable Symmetric Encryption, SSE）允许在密文上直接执行关键词查询，成为保护智能合约数据隐私的重要技术。然而，现有具备前向安全与后向安全的动态对称可搜索加密（DSSE）方案大多仅支持单关键词查询，无法满足智能合约中复杂业务逻辑所需的联合查询（如多关键词与/或查询）需求。尽管已有部分方案尝试支持联合查询，但其后向安全本质上仍退化为单关键词的安全性保障，或前向安全覆盖不全面，
+                  难以抵御智能合约环境下恶意对手通过链上历史记录实施的分析攻击。我们提出了两个新的支持联合查询的动态对称可搜索加密方案，它们同时具有前向和后向安全。为了分析其安全性，我们提出了两种新的后向安全定义（Type-O和Type-O-，安全性逐渐提高），这对OXT框架中的联合查询泄露提供了更全面的理解。安全性分析和实验评估表明，所提出的方案在合理的计算和通信开销下实现了更好的安全性，能够更好地提升智能合约中密文数据联合查询的隐私保护强度。
+</p>
+                </div>
+              </div>
+              
+              <div class="schedule-item">
+                <div class="schedule-time">10:40–11:05</div>
+                <div>
+                  <strong>浙江大学 陈嘉弛：AI赋能Web3数字金融 —机遇与挑战</strong>
+                  <p>Web3技术的出现催生了许多新应用，如去中心化金融（DeFi）、稳定币和现实世界资产通证化（RWA）等。与此同时，以大语言模型（LLM）为代表的人工智能技术正推动着新一轮的技术创新。大语言模型和Web3这两项技术展现出了很强的互补性，即大语言模型赋能Web3，Web3助力大语言模型。本次报告将介绍大语言模型为Web3领域带来的两大机遇。其一，大语言模型可为Web3系统赋予智能，使Web3应用更具可用性和可访问性。其二，大语言模型为安全审计开辟了新的方法途径，使Web3应用可能更具安全性。然而，大语言模型本身存在诸如幻觉等问题，Web3系统也面临复杂的攻击面。本次报告将探讨上述机遇与挑战，并介绍我们在这些主题上的一些最新研究成果。</p>
+                </div>
+              </div>
+              
+              
+              
+              <div class="schedule-item">
+                <div class="schedule-time">11:05–11:30</div>
+             
+                
+                 <div>
+                  <strong>联邦科学与工业研究组织 Data61 王沁：关于PoA共识协议的安全分析</strong>
+                  <p>共识机制是区块链系统安全性的基础，决定了节点如何就交易顺序、区块有效性和账本状态达成一致。Proof-of-Authority（PoA）是其中一类重要机制，广泛用于许可链、联盟链和部分高性能公链，也是现行主流公链的基础，包括但不限于以太坊和币安链。PoA 通过授权验证者集合实现快速出块和低延迟确认，但其安全性高度依赖具体的领导者选择、出块优先级、投票规则和最终性设计。
+本次报告聚焦 PoA 共识中的 finality 安全问题。报告将从 PoA 的两类主流实现 Clique 和 Aura 出发，介绍其基本运行逻辑，并进一步结合 Binance Smart Chain 和 VeChainThor 两个真实系统，分析快速最终性机制在实际部署中可能暴露的安全风险。相关攻击表明，协议中的时序假设、消息传播差异和同步机制缺陷，可能导致最终性延迟、投票分裂、活性失败，甚至区块重组。我们还将讨论这些问题背后的共性原因及可能的改进方向，以及对现行区块链系统的启示。</p>
+                </div>
+                
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">11:30–11:55</div>
+                   <div>
+                  <strong>香港城市大学 牛健宇：分布式机密计算：系统、安全与应用</strong>
+                  <p>机密计算旨在保护多方不可信环境中的数据使用安全（data-in-use），可信执行环境（TEE）为其提供硬件级安全保障。分布式机密计算通过将TEE与分布式协议深度融合，实现机密服务的可靠性、状态连续性与去中心化可信。本报告以三个代表性系统为主线，介绍该方向的发展脉络：Engraft（CCS’22）探索TEE赋能的拜占庭容错复制机制；Achilles（EuroSys’25）通过抗回滚恢复机制保障长期运行系统的安全性与可用性；TeeDAO 则进一步通过异构TEE协同与去中心化BFT框架实现自治可信。除系统基础能力外，分布式机密计算也正逐渐支撑机密区块链、跨链与Rollup基础设施，以及隐私保护联邦学习等新兴应用。整体而言，这一演进过程展示了从正确性保障、到恢复能力、再到自治可信的分布式机密计算发展路径。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="session-block">
+            <h3>下午场</h3>
+            <div class="schedule-list">
+              <div class="schedule-item">
+                <div class="schedule-time">14:00–14:25</div>
+                <div>
+                  <strong>清华大学 袁渊源：可信执行环境中 AI 系统的侧信道数据泄漏</strong>
+                  <p>可信执行环境（Trusted Execution Environment, TEE）被广泛用于在不可信平台上保护敏感数据与计算过程，但其隔离机制并不能完全阻断硬件侧信道泄漏。本报告聚焦 TEE 防护下的 AI 系统，重点讨论其中两类数据泄漏面。第一类泄漏来自数据处理阶段所依赖的通用数据处理库，如 Libjpeg 和 FFmpeg。此类程序在处理图像、音频等输入时，往往存在与输入内容相关的控制分支和内存访问行为，其缓存访问模式可能随输入变化而改变，从而使攻击者能够从缓存访问轨迹中重构敏感输入数据。第二类泄漏来自 AI 模型自身的计算过程。尽管 TEE 会对 AI 模型、输入、输出及中间结果进行加密保护，但主流商业 TEE 受制于性能开销，通常采用确定性内存加密机制：当相同明文被写入相同内存地址时，会产生相同密文。攻击者因此可以通过观察密文变化模式，推断模型计算过程中的数据相关信息，并进一步重构原始输入。此外，本报告还将分析 AI 系统固有属性对上述两类泄漏的放大作用，说明其如何增强侧信道观测与隐私数据之间的关联，并推动数据重构攻击走向现实可利用。本报告旨在揭示可信 AI 系统中算法特性、软件行为与硬件机制协同作用下的数据泄漏风险机理。</p>
+                </div>
+              </div>
+              
+              <div class="schedule-item">
+                <div class="schedule-time">14:25–14:50</div>
+                <div>
+                  <strong>电子科大 王煜宇：TBD</strong>
+                  <p>TBD</p>
+                </div>
+              </div>
+              
+              <div class="schedule-item">
+                 <div class="schedule-time">14:50–15:15</div>
+                <div>
+                  <strong>香港理工大学 贺宁宇：区块链接入层基础设施的安全测试：从用户交互到节点接口</strong>
+                  <p>本报告关注区块链生态中连接用户、应用与链上系统的接入层基础设施安全。相比传统上以智能合约为中心的安全研究，本报告将视角转向浏览器钱包和以太坊节点 API 这两类关键入口组件：前者直接影响用户对交易意图、风险提示和资产变动的理解，后者则决定应用和服务获取链上状态的正确性与一致性。报告将介绍两项安全测试工作：一项面向 Web3 浏览器钱包扩展，系统发现 UI 展示、交易模拟和安全告警中的误导性风险；另一项面向以太坊客户端 API，通过规范引导的差分测试发现多客户端实现不一致。两项工作共同说明，区块链安全不仅依赖链上合约，也依赖接入层基础设施的可靠实现。</p>
+                </div>
+              </div>
+              
+       
+              
+              <div class="schedule-item">
+                <div class="schedule-time">15:15–15:30</div>
+                <div>
+                  <strong>茶歇与交流</strong>
+                  <p>自由交流与会间讨论。</p>
+                </div>
+              </div>
+              
+              
+              <div class="schedule-item">
+               <div class="schedule-time">15:30–15:55</div>
+                <div>
+                  <strong>曼切斯特大学 王志鹏：x402 智能体支付协议的跨层安全风险分析</strong>
+                  <p>x402 协议通过 HTTP 402 状态码实现 Web 原生微支付，为智能体调用 API、内容访问和自动化交易提供了新的支付基础设施。然而，该协议将同步 HTTP 授权与异步区块链结算相结合，形成了跨层安全边界，可能引发结算不一致、支付重放、缓存泄露和服务选择操纵等风险。
+本报告系统分析 x402 智能体支付协议的安全问题，归纳五类典型攻击：结算路径不一致、结算抢占、支付载荷重放、HTTP/代理混淆以及服务发现操纵。实验与实现审计表明，这些问题可能导致未支付服务访问或已支付但服务被拒绝。报告进一步提出结算确认、资源绑定、幂等性检查、缓存隔离和发现层防护等建议，为智能体支付协议的安全设计与部署提供参考。</p>
+                </div>
+              </div>
+              
+              
+              <div class="schedule-item">
+                <div class="schedule-time">15:55–16:20</div>
+                <div>
+                  <strong>王雪超 香港科技大学（广州）：抗量子区块链共识最新进展</strong>
+                  <p>在本次报告中，我将介绍两种后量子安全的区块链共识协议。第一种是TetraBFT，这是一种基于领导者的拜占庭容错协议，能够在无需依赖签名的情况下解决共识问题。TetraBFT具备几个显著优势：它只需常量级的本地存储，具备最优的通信复杂性，确保乐观响应，并能够在仅五个消息延迟内达成共识，优于所有已知具有类似属性的无签名协议。第二种协议是Sailfish++，一种无签名、后量子安全的基于有向无环图的拜占庭容错协议。其核心创新是引入了一种乐观可靠广播协议，在保持最佳容错的同时，在某些乐观条件下仅需两步即可终止。因此，Sailfish++实现了三步确认延迟，与最佳的基于签名的协议相同。我们的实验评估显示，Sailfish++在CPU资源有限的机器上显著优于现有的后量子安全和基于签名的协议。这些结果表明，无签名协议在后量子时代有望成为区块链实际部署的理想选择。</p>
+                </div>
+              </div>
+             
+            
+                <div class="schedule-item">
+                <div class="schedule-time">16:20–16:45</div>
+                <div>
+                  <strong>暨南大学 刘逸：安全与效率并重的通用安全多方计算</strong>
+                  <p>通用安全多方计算是密码学中的重要技术，旨在使多个参与方在不泄露各自私有输入的前提下，联合完成任意函数计算。现有协议按照安全性大体可分为两类：被动（半诚实）安全协议假设参与方严格按照协议执行，仅可能通过交互信息推断他人输入，因而通常具有较高效率，但一旦参与方偏离协议，其安全性将难以保障；主动（恶意）安全协议则允许参与方在执行过程中任意偏离协议，仍能保证输入隐私和计算正确性，但往往需要付出较高的计算和通信开销。
+
+报告人近期的研究围绕上述安全性与效率之间的核心矛盾，尝试在被动安全与主动安全之间建立新的折中路径。通过设计新的协议结构和安全机制，在尽可能接近主动安全保障的同时，显著降低协议执行开销。本报告将介绍相关研究思路、技术方法及近期研究成果。</p>
+                </div>
+              </div>
+              
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="speakers" style="background: #fff;">
+      <div class="container">
+        <div class="section-title">
+          <span>Speakers</span>
+          <h2>演讲者介绍</h2>
+          <p>
+本论坛邀请来自境内外知名高校和科研机构的青年学者，围绕法定数字货币安全与隐私保护相关前沿问题开展交流。          </p>
+        </div>
+
+        <div class="speaker-grid">
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/wangqin.jpg" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = "https://qinwang.tech/">王沁</a></h4>
+              <div class="affiliation">联邦科学与工业研究组织 Data61（澳大利亚） / 研究员 </div>
+            </div>
+          </div> 
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/profile_niu_new.jpg" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = "https://jianyu-niu.github.io/">牛健宇</a></h4>
+              <div class="affiliation">香港城市大学（中国香港）/ 助理研究员</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/hanwen.jpg" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = "https://hanwen-feng.github.io/">冯翰文</a></h4>
+              <div class="affiliation">坎特伯雷大学 （新西兰） / 副教授（高级讲师）</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/congzuo.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = "https://zuocong10.github.io/">左聪</a></h4>
+              <div class="affiliation">北京理工大学 / 教授</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/yuanyuan6.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = "https://yuanyuan-yuan.github.io/">袁渊源</a></h4>
+              <div class="affiliation">清华大学 / 助理教授</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/ningyu.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = " https://ningyu-he.notion.site/Ningyu-s-Homepage-74990eabecda4c5b9cd0e90762ebc7a9">贺宁宇</a></h4>
+              <div class="affiliation">香港理工大学 / 研究助理教授</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/yiliu.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = "https://liuyi.pro/ "> 刘逸</a></h4>
+              <div class="affiliation">暨南大学 / 助理教授</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/jiachi.jpg" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = "https://jiachi-chen.github.io/ ">陈嘉驰</a></h4>
+              <div class="affiliation">浙江大学 / 教授</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/fang.jpg" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4> <a href = "https://people.iiis.tsinghua.edu.cn/~fang/ "> 房智轩</a></h4>
+              <div class="affiliation">清华大学 / 助理教授</div>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/zhipeng.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = "https://zhipengwang.io/">王志鹏</a></h4>
+              <div class="affiliation">曼切斯特大学 （英国）/ 助理教授（讲师）</div>
+            </div>
+          </div>
+        
+        
+        <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/xuechao.jpg" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = "https://xuechao2.github.io/">王雪超</a></h4>
+              <div class="affiliation">香港科技大学（广州）/ 助理教授</div>
+            </div>
+          </div>
+
+           <div class="speaker-card">
+            <div class="speaker-photo"><img src="newpic/yuyu.png" alt="演讲者照片占位符" /></div>
+            <div>
+              <h4><a href = "https://xuechao2.github.io/">王煜宇</a></h4>
+              <div class="affiliation">电子科技大学/教授</div>
+            </div>
+          </div>
+          
+           </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <section id="organizers" style="background: #fffaf3;">
+      <div class="container">
+        <div class="section-title">
+          <span>Organizers</span>
+          <h2>组织信息</h2>
+          <p>
+本论坛由清华大学高等研究院组织，围绕法定数字货币安全、隐私保护、可信运行与监管支撑等关键问题开展交流。
+          </p>
+        </div>
+
+        <div class="organizer-panel">
+          <div class="organizer-band">
+            <div class="organizer-label">
+              <div class="organizer-label-title">组织单位</div>
+              <div class="organizer-label-subtitle">Host</div>
+            </div>
+            <div class="organizer-content">
+              <div>
+                <div class="host-name">清华大学高等研究院</div>
+                <div class="host-note">负责论坛组织与学术交流安排</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="organizer-band">
+            <div class="organizer-label">
+              <div class="organizer-label-title">组织委员会</div>
+              <div class="organizer-label-subtitle">Committee</div>
+            </div>
+            <div class="organizer-content">
+              <div class="committee-grid">
+                <div class="committee-member">
+                  <div class="committee-name"><a href="https://rujia.uk/">李汝佳</a></div>
+                  <div class="committee-affiliation">清华大学</div>
+                </div>
+                <div class="committee-member">
+                  <div class="committee-name">陈庆接</div>
+                  <div class="committee-affiliation">数字货币研究所</div>
+                </div>
+                <div class="committee-member">
+                  <div class="committee-name">何孟炜</div>
+                  <div class="committee-affiliation">数字货币研究所</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div>© 法定数字货币安全与隐私保护论坛</div>
+      <div>清华大学高等研究院</div>
+    </div>
+  </footer>
+</body>
+</html>
