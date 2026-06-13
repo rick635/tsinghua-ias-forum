@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>国际密码与系统安全论坛</title>
+
+  <style>
+    :root {
+      --main-color: #1f3a5f;
+      --accent-color: #8b1e3f;
+      --text-color: #222;
+      --muted-color: #666;
+      --bg-color: #f7f7f7;
+      --card-bg: #ffffff;
+      --light-bg: #fafafa;
+      --border-color: #e5e5e5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif SC", "Songti SC", "SimSun", Georgia, serif;
+      color: var(--text-color);
+      background: var(--bg-color);
+      line-height: 1.75;
+    }
+
+    a {
+      color: var(--main-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+    }
+
+    header {
+      background: var(--main-color);
+      color: white;
+      padding: 52px 20px 46px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.45rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    header .subtitle {
+      margin-top: 14px;
+      font-size: 1.1rem;
+      color: #e6eaf0;
+    }
+
+    header .tagline {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #d7dde8;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: white;
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+      padding: 12px 10px;
+    }
+
+    nav a {
+      margin: 0 12px;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 36px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    section,
+    aside .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      padding: 26px 30px;
+      margin-bottom: 24px;
+    }
+
+    aside {
+      position: sticky;
+      top: 68px;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--main-color);
+      font-size: 1.4rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 8px;
+      color: var(--main-color);
+      font-size: 1.08rem;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .upcoming {
+      border-top: 4px solid var(--accent-color);
+    }
+
+    .session-title {
+      font-size: 1.22rem;
+      color: var(--main-color);
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+
+    .meta {
+      color: var(--muted-color);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .speaker-box {
+      background: var(--light-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 14px 18px;
+      margin-top: 16px;
+    }
+
+    .compact-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .compact-list li {
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .compact-list li:last-child {
+      border-bottom: none;
+    }
+
+    .past-placeholder {
+      background: var(--light-bg);
+      border: 1px solid var(--border-color);
+      padding: 14px 18px;
+      border-radius: 4px;
+      color: var(--muted-color);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted-color);
+      font-size: 0.9rem;
+      padding: 24px 20px 46px;
+    }
+
+    @media (max-width: 860px) {
+      header h1 {
+        font-size: 1.9rem;
+      }
+
+      nav {
+        text-align: left;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 0 10px 0 0;
+      }
+
+      .container {
+        display: block;
+        margin-top: 24px;
+      }
+
+      aside {
+        position: static;
+      }
+
+      section,
+      aside .card {
+        padding: 22px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>国际密码与系统安全论坛</h1>
+    <div class="subtitle">
+      International Forum on Cryptography and System Security
+    </div>
+    <div class="tagline">
+      面向密码学、系统安全、加密经济学与 AI 安全的月度邀请制讨论论坛
+    </div>
+  </header>
+
+  <nav>
+    <a href="#upcoming">近期活动</a>
+    <a href="#about">论坛简介</a>
+    <a href="#topics">议题范围</a>
+    <a href="#past">往期活动</a>
+    <a href="#format">论坛形式</a>
+    <a href="#rules">讨论原则</a>
+    <a href="#organization">组织信息</a>
+    <a href="#contact">联系方式</a>
+  </nav>
+
+  <div class="container">
+
+    <main>
+
+      <section id="upcoming" class="upcoming">
+        <h2>近期活动</h2>
+
+        <div class="session-title">
+          第一期：密码学、系统安全、加密经济学与 AI 安全中的开放问题
+        </div>
+
+        <p class="meta">
+          时间：待定<br />
+          地点：清华大学 / 线上会议<br />
+          形式：邀请报告 + 开放讨论
+        </p>
+
+        <p>
+          本期论坛将围绕真实系统中的安全假设、协议部署挑战、经济激励对安全性的影响、
+          AI 系统中的新型攻击面以及未来合作方向展开讨论。
+        </p>
+
+        <div class="speaker-box">
+          <strong>报告人：</strong>
+          <ul>
+            <li>待定</li>
+            <li>待定</li>
+            <li>待定</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>论坛简介</h2>
+
+        <p>
+          国际密码与系统安全论坛是一个长期举办的月度学术交流平台，关注密码学、系统安全、
+          加密经济学与 AI 安全的交叉问题。
+        </p>
+
+        <p>
+          论坛采用邀请制，每次邀请 2–3 位报告人，鼓励报告 early-stage ideas、
+          work in progress、negative results、system lessons 和 open problems。
+          论坛不以正式论文发表为目标，而是强调深入讨论、建设性反馈和长期合作。
+        </p>
+
+        <p>
+          我们希望通过持续、务实和高质量的交流，促进不同研究社区之间的相互理解，
+          并为年轻学者提供一个能够充分讨论问题的国际化学术空间。
+        </p>
+      </section>
+
+      <section id="topics">
+        <h2>议题范围</h2>
+
+        <p>
+          论坛欢迎密码学、系统安全、加密经济学与 AI 安全交叉方向的研究话题，包括但不限于：
+        </p>
+
+        <ul>
+          <li>现实系统中的密码协议与安全机制；</li>
+          <li>安全多方计算、零知识证明、后量子密码与可验证计算；</li>
+          <li>系统安全、可信执行环境与机密计算；</li>
+          <li>区块链共识安全、MEV、质押机制与治理风险；</li>
+          <li>加密经济学、机制设计、激励兼容性与协议安全；</li>
+          <li>开放分布式系统中的理性行为、攻击策略与经济安全边界；</li>
+          <li>AI 系统安全、智能体安全、对抗攻击与模型安全；</li>
+          <li>AI 辅助的安全分析、漏洞发现、协议验证与攻击生成；</li>
+          <li>隐私保护计算、数据安全与数字金融基础设施；</li>
+          <li>安全协议的形式化分析、实证测量、攻击与防御。</li>
+        </ul>
+      </section>
+
+      <section id="past">
+        <h2>往期活动</h2>
+
+        <p>
+          往期活动信息将在论坛举办后陆续更新，包括报告题目、报告人、摘要、
+          可公开的幻灯片以及简要讨论记录。
+        </p>
+
+        <div class="past-placeholder">
+          暂无往期活动。Past sessions will be listed here.
+        </div>
+      </section>
+
+    </main>
+
+    <aside>
+
+      <div id="format" class="card">
+        <h2>论坛形式</h2>
+
+        <ul class="compact-list">
+          <li>每月举办一次</li>
+          <li>每次邀请 2–3 位报告人</li>
+          <li>每个报告约 20–30 分钟</li>
+          <li>报告后安排充分讨论</li>
+          <li>无正式 proceedings</li>
+        </ul>
+      </div>
+
+      <div id="rules" class="card">
+        <h2>讨论原则</h2>
+
+        <p>
+          本论坛鼓励开放、直接而建设性的学术讨论。欢迎对模型假设、系统设计、
+          攻击场景、经济激励、AI 系统行为和安全边界提出质疑。
+        </p>
+
+        <ul>
+          <li>欢迎早期想法和正在进行的工作；</li>
+          <li>欢迎负面结果、系统经验和失败案例；</li>
+          <li>未经报告人同意，不公开传播或归属未发表内容；</li>
+          <li>讨论应保持专业、友好和建设性。</li>
+        </ul>
+      </div>
+
+      <div id="organization" class="card">
+        <h2>组织信息</h2>
+
+        <p>
+          本论坛由清华大学高等研究院相关研究团队发起并组织，
+          面向国际密码学、系统安全、加密经济学与 AI 安全研究社区长期开放。
+        </p>
+
+        <h3>组织者</h3>
+        <p>
+          XXX<br />
+          清华大学高等研究院
+        </p>
+
+        <h3>顾问与联合组织者</h3>
+        <p>
+          后续将根据论坛主题和合作情况陆续更新。
+        </p>
+      </div>
+
+      <div id="contact" class="card">
+        <h2>联系方式</h2>
+
+        <p>
+          如希望了解论坛信息、推荐报告人，或参与未来活动，请联系：
+        </p>
+
+        <p>
+          XXX<br />
+          清华大学高等研究院<br />
+          Email:
+          <a href="mailto:your-email@example.com">your-email@example.com</a>
+        </p>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <footer>
+    © 2026 International Forum on Cryptography and System Security.
+  </footer>
+
+</body>
+</html>
